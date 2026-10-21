@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 
 from app.pipeline.sampling import (
@@ -31,11 +32,20 @@ documents = [
     if line.strip()
 ]
 
-results = assign_sampling_weights(
-    documents
+sampling_scope = os.environ.get(
+    "SAMPLING_SCOPE",
+    "experiment",
 )
 
-summary = summarize_sampling(results)
+results = assign_sampling_weights(
+    documents,
+    sampling_scope=sampling_scope,
+)
+
+summary = summarize_sampling(
+    results,
+    sampling_scope=sampling_scope,
+)
 
 output_path.write_text(
     "\n".join(
@@ -60,6 +70,7 @@ summary_path.write_text(
 )
 
 print(f"采样计划生成：{len(results)} 条")
+print(f"采样范围：{summary['sampling_scope']}")
 print(
     f"可采样："
     f"{summary['eligible_count']} 条"

@@ -8,6 +8,11 @@ QUALITY_WEIGHTS = {
     "reject": 0.0,
 }
 
+SAMPLING_SCOPES = {
+    "experiment",
+    "release",
+}
+
 
 def sampling_group(document: dict) -> str:
     language = document.get("language", "unknown")
@@ -15,9 +20,62 @@ def sampling_group(document: dict) -> str:
     return f"{language}::{topic}"
 
 
+def normalize_sampling_scope(
+    sampling_scope: str,
+) -> str:
+    scope = str(
+        sampling_scope or "experiment"
+    ).strip().casefold()
+
+    if scope not in SAMPLING_SCOPES:
+        raise ValueError(
+            "不支持的采样范围："
+            f"{scope}，可选值为 experiment 或 release"
+        )
+
+    return scope
+
+
+def assess_sampling_policy(
+    document: dict,
+    sampling_scope: str,
+) -> tuple[bool, str | None]:
+    """Check source policy without changing quality decisions."""
+    source_registered = bool(
+        document.get("source_registered", True)
+    )
+
+    if not source_registered:
+        return False, "source_unregistered"
+
+    if sampling_scope == "experiment":
+        return True, None
+
+    if bool(
+        document.get("release_eligible", False)
+    ):
+        return True, None
+
+    if document.get("usage_policy") == "blocked":
+        return False, "source_blocked"
+
+    if document.get("license_status") in {
+        "restricted",
+        "unknown",
+    }:
+        return False, "license_restricted"
+
+    return False, "license_not_verified"
+
+
 def assign_sampling_weights(
     documents: list[dict],
+    sampling_scope: str = "experiment",
 ) -> list[dict]:
+    sampling_scope = normalize_sampling_scope(
+        sampling_scope
+    )
+
     group_counts = Counter(
         sampling_group(document)
         for document in documents
@@ -37,29 +95,62 @@ def assign_sampling_weights(
             0.5,
         )
 
-        balance_factor = 1 / math.sqrt(
-            group_counts[group]
+        policy_eligible, policy_reason = (
+            assess_sampling_policy(
+                document,
+                sampling_scope,
+            )
         )
 
-        sampling_weight = round(
-            base_weight * balance_factor,
-            4,
+        if base_weight <= 0:
+            sampling_weight = 0.0
+            sampling_status = "excluded"
+            sampling_exclusion_reason = (
+                "quality_rejected"
+            )
+        elif not policy_eligible:
+            sampling_weight = 0.0
+            sampling_status = "excluded"
+            sampling_exclusion_reason = (
+                policy_reason
+            )
+        else:
+            balance_factor = 1 / math.sqrt(
+                group_counts[group]
+            )
+            sampling_weight = round(
+                base_weight * balance_factor,
+                4,
+            )
+            sampling_status = (
+                "eligible"
+                if sampling_weight > 0
+                else "excluded"
+            )
+            sampling_exclusion_reason = None
+
+        balance_factor = 1 / math.sqrt(
+            group_counts[group]
         )
 
         results.append(
             {
                 **document,
+                "sampling_scope": sampling_scope,
                 "sampling_group": group,
                 "base_sampling_weight": base_weight,
+                "policy_eligible": policy_eligible,
+                "policy_exclusion_reason": (
+                    policy_reason
+                ),
                 "sampling_balance_factor": round(
                     balance_factor,
                     4,
                 ),
                 "sampling_weight": sampling_weight,
-                "sampling_status": (
-                    "eligible"
-                    if sampling_weight > 0
-                    else "excluded"
+                "sampling_status": sampling_status,
+                "sampling_exclusion_reason": (
+                    sampling_exclusion_reason
                 ),
             }
         )
@@ -69,7 +160,24 @@ def assign_sampling_weights(
 
 def summarize_sampling(
     documents: list[dict],
+    sampling_scope: str | None = None,
 ) -> dict:
+    if sampling_scope is None:
+        sampling_scope = next(
+            (
+                document.get(
+                    "sampling_scope"
+                )
+                for document in documents
+                if document.get("sampling_scope")
+            ),
+            "experiment",
+        )
+
+    sampling_scope = normalize_sampling_scope(
+        sampling_scope
+    )
+
     group_stats = {}
 
     for document in documents:
@@ -96,8 +204,58 @@ def summarize_sampling(
             4,
         )
 
+    quality_excluded_count = sum(
+        document.get(
+            "base_sampling_weight",
+            0.0,
+        )
+        <= 0
+        for document in documents
+    )
+    policy_eligible_count = sum(
+        document.get(
+            "base_sampling_weight",
+            0.0,
+        )
+        > 0
+        and document.get(
+            "policy_eligible",
+            True,
+        )
+        for document in documents
+    )
+    policy_exclusion_counts = Counter(
+        document.get(
+            "policy_exclusion_reason",
+            "unknown_policy_reason",
+        )
+        for document in documents
+        if document.get(
+            "base_sampling_weight",
+            0.0,
+        )
+        > 0
+        and not document.get(
+            "policy_eligible",
+            True,
+        )
+    )
+
     return {
+        "sampling_scope": sampling_scope,
         "total": len(documents),
+        "quality_excluded_count": (
+            quality_excluded_count
+        ),
+        "policy_eligible_count": (
+            policy_eligible_count
+        ),
+        "policy_excluded_count": sum(
+            policy_exclusion_counts.values()
+        ),
+        "policy_exclusion_counts": dict(
+            policy_exclusion_counts
+        ),
         "eligible_count": sum(
             item["sampling_status"] == "eligible"
             for item in documents

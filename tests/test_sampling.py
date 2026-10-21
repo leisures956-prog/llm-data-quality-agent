@@ -72,3 +72,114 @@ def test_sampling_summary_counts_documents():
     assert summary["total"] == 2
     assert summary["eligible_count"] == 1
     assert summary["excluded_count"] == 1
+
+
+def test_experiment_scope_preserves_unverified_source():
+    documents = [
+        {
+            "id": "experiment_doc",
+            "language": "en",
+            "topic": "technology",
+            "quality_bucket": "keep",
+            "source_registered": True,
+            "license_status": "to_verify",
+            "release_eligible": False,
+        }
+    ]
+
+    result = assign_sampling_weights(
+        documents,
+        sampling_scope="experiment",
+    )[0]
+
+    assert result["sampling_status"] == "eligible"
+    assert result["sampling_weight"] > 0
+    assert result["policy_eligible"] is True
+
+
+def test_release_scope_excludes_unverified_source():
+    documents = [
+        {
+            "id": "release_doc",
+            "language": "en",
+            "topic": "technology",
+            "quality_bucket": "keep",
+            "source_registered": True,
+            "license_status": "to_verify",
+            "release_eligible": False,
+        }
+    ]
+
+    result = assign_sampling_weights(
+        documents,
+        sampling_scope="release",
+    )[0]
+
+    assert result["sampling_status"] == "excluded"
+    assert result["sampling_weight"] == 0.0
+    assert result["sampling_exclusion_reason"] == (
+        "license_not_verified"
+    )
+
+
+def test_release_scope_allows_verified_source():
+    documents = [
+        {
+            "id": "verified_doc",
+            "language": "en",
+            "topic": "technology",
+            "quality_bucket": "keep",
+            "source_registered": True,
+            "license_status": "verified",
+            "release_eligible": True,
+        }
+    ]
+
+    result = assign_sampling_weights(
+        documents,
+        sampling_scope="release",
+    )[0]
+
+    assert result["sampling_status"] == "eligible"
+    assert result["sampling_weight"] > 0
+
+
+def test_sampling_summary_reports_policy_exclusions():
+    documents = [
+        {
+            "id": "pending",
+            "language": "en",
+            "topic": "technology",
+            "quality_bucket": "keep",
+            "source_registered": True,
+            "license_status": "to_verify",
+            "release_eligible": False,
+        },
+        {
+            "id": "rejected",
+            "language": "en",
+            "topic": "news",
+            "quality_bucket": "reject",
+            "source_registered": True,
+            "license_status": "to_verify",
+            "release_eligible": False,
+        },
+    ]
+
+    results = assign_sampling_weights(
+        documents,
+        sampling_scope="release",
+    )
+    summary = summarize_sampling(
+        results,
+        sampling_scope="release",
+    )
+
+    assert summary["sampling_scope"] == "release"
+    assert summary["quality_excluded_count"] == 1
+    assert summary["policy_eligible_count"] == 0
+    assert summary["policy_excluded_count"] == 1
+    assert summary["policy_exclusion_counts"] == {
+        "license_not_verified": 1
+    }
+    assert summary["eligible_count"] == 0
