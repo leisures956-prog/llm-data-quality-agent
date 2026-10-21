@@ -1,5 +1,9 @@
 from collections import Counter
 
+from app.pipeline.source_registry import (
+    summarize_source_registry,
+)
+
 
 REQUIRED_FIELDS = {
     "id",
@@ -70,6 +74,7 @@ def get_missing_metadata_fields(
 
 def summarize_dataset(
     documents: list[dict],
+    source_registry: dict | None = None,
 ) -> dict:
     id_counts = Counter(
         item.get("id", "")
@@ -125,7 +130,7 @@ def summarize_dataset(
         license_counts[license_name] += 1
         collected_at_counts[collected_at] += 1
 
-    return {
+    summary = {
         "total": len(documents),
         "language_counts": dict(
             language_counts
@@ -159,3 +164,13 @@ def summarize_dataset(
             ),
         },
     }
+
+    if source_registry is not None:
+        summary["source_registry"] = (
+            summarize_source_registry(
+                documents,
+                source_registry,
+            )
+        )
+
+    return summary

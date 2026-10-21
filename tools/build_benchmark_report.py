@@ -95,6 +95,14 @@ bundle["dataset_metadata"] = (
     )
 )
 
+bundle["source_registry"] = manifest_content.get(
+    "summary",
+    {},
+).get(
+    "source_registry",
+    {},
+)
+
 
 output_path.write_text(
     json.dumps(

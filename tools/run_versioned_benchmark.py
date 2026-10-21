@@ -335,6 +335,14 @@ def build_lightweight_report(
         )
     )
 
+    bundle["source_registry"] = manifest_content.get(
+        "summary",
+        {},
+    ).get(
+        "source_registry",
+        {},
+    )
+
     output_path = (
         report_dir
         / f"{RUN_NAME}_run_report.json"

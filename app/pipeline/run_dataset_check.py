@@ -9,6 +9,9 @@ from app.pipeline.dataset_registry import (
 from app.pipeline.dataset_paths import (
     get_dataset_path,
 )
+from app.pipeline.source_registry import (
+    load_source_registry,
+)
 
 input_path = get_dataset_path()
 
@@ -32,6 +35,17 @@ report_path = Path(
         "DATASET_REPORT_PATH",
         "reports/dataset_manifest.json",
     )
+)
+
+source_registry_path = Path(
+    os.environ.get(
+        "SOURCE_REGISTRY_PATH",
+        "config/source_registry.json",
+    )
+)
+
+source_registry = load_source_registry(
+    source_registry_path
 )
 
 documents = []
@@ -78,7 +92,10 @@ for line_number, line in enumerate(
     else:
         valid_count += 1
 
-summary = summarize_dataset(documents)
+summary = summarize_dataset(
+    documents,
+    source_registry=source_registry,
+)
 summary["valid_count"] = valid_count
 summary["invalid_count"] = len(
     documents
@@ -92,6 +109,9 @@ payload = {
         "pipeline_version": pipeline_version,
         "run_id": run_id,
     },
+    "source_registry_path": str(
+        source_registry_path
+    ),
     "summary": summary,
     "errors": errors,
 }

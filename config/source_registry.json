@@ -1,0 +1,93 @@
+{
+  "registry_version": "source_registry_v1",
+  "sources": {
+    "docs.python.org": {
+      "source_name": "Python Documentation",
+      "license_status": "to_verify",
+      "license_url": "https://docs.python.org/3/license.html",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "peps.python.org": {
+      "source_name": "Python Enhancement Proposals",
+      "license_status": "to_verify",
+      "license_url": "https://peps.python.org/",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "scikit-learn.org": {
+      "source_name": "scikit-learn Documentation",
+      "license_status": "to_verify",
+      "license_url": "https://scikit-learn.org/stable/about.html",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "developer.mozilla.org": {
+      "source_name": "MDN Web Docs",
+      "license_status": "to_verify",
+      "license_url": "https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Howto/Using_the_MDN_content_license",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "en.wikipedia.org": {
+      "source_name": "English Wikipedia",
+      "license_status": "to_verify",
+      "license_url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "zh.wikipedia.org": {
+      "source_name": "Chinese Wikipedia",
+      "license_status": "to_verify",
+      "license_url": "https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "blog.python.org": {
+      "source_name": "Python Insider",
+      "license_status": "to_verify",
+      "license_url": "https://www.python.org/psf-landing/",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "pytorch.org": {
+      "source_name": "PyTorch",
+      "license_status": "to_verify",
+      "license_url": "https://pytorch.org/docs/stable/",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "python.org": {
+      "source_name": "Python.org",
+      "license_status": "to_verify",
+      "license_url": "https://www.python.org/about/legal/",
+      "usage_policy": "review_before_release",
+      "experiment_eligible": true,
+      "release_eligible": false
+    },
+    "example.com": {
+      "source_name": "Example Domain",
+      "license_status": "unknown",
+      "license_url": "",
+      "usage_policy": "blocked",
+      "experiment_eligible": false,
+      "release_eligible": false
+    },
+    "example.cn": {
+      "source_name": "Example Domain CN",
+      "license_status": "unknown",
+      "license_url": "",
+      "usage_policy": "blocked",
+      "experiment_eligible": false,
+      "release_eligible": false
+    }
+  }
+}
