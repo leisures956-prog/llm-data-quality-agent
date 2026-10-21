@@ -36,13 +36,14 @@ Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v
 - 不覆盖旧结果的版本化 Benchmark 运行
 - Benchmark 版本差异对比报告
 - review 数量预算控制
+- 轻量 Benchmark 回归门禁与 GitHub Actions 自动检查
 
 当前仍需加强：
 
 - 更大规模、更多网页类型的人工审核集
 - 真实网页中的导航、广告、页脚和 Cookie 模板验证
 - 更可靠的领域/主题分类器
-- 更大规模 Benchmark 的自动化回归对比
+- 将完整大规模 Benchmark 与门禁接入定期或手动回归任务
 - 来源许可证的实际核验（当前样本仍为 `to_verify`）
 - 多来源、多语言数据的采样配比优化
 
@@ -188,6 +189,50 @@ Benchmark 汇总报告
 - `data/processed/html_benchmark_v2_aggregation_v3`
 - `reports/html_benchmark_v2_aggregation_v3`
 
+## Benchmark 自动化回归门禁
+
+项目现在有一条不依赖真实网页原始数据的轻量回归门禁，用来防止后续修改评分规则时出现意外回归。门禁使用 10 条经过设计的特征快照，覆盖：
+
+- 正常知识页
+- 内容密度较高的长文档
+- 目录/导航页
+- Blog 文章聚合页
+- 过短文本
+- 近似重复文档
+- 重复行和高链接比例场景
+
+门禁会检查：
+
+- 文档 ID 是否意外新增或删除
+- `keep / review / reject` 决策是否发生未授权变化
+- 单文档分数下降是否超过阈值
+- 全体平均分是否明显下降
+- `review` 比例是否超过人工复核预算
+- 评分规则版本是否符合预期
+- 轻量快照的总数、决策分布和预期分数是否一致
+
+门禁配置位于 `config/benchmark_regression_policy.json`，快照位于 `tests/fixtures/`，实现位于 `tools/run_benchmark_regression_gate.py`。它只读取规则配置和测试快照，不修改原始网页数据。
+
+本地运行轻量门禁：
+
+```powershell
+python -m tools.run_benchmark_regression_gate `
+    --output .pytest_tmp_local/benchmark_regression_gate.json
+```
+
+如果门禁失败，命令会返回非零退出码，并在报告的 `violations` 字段列出触发的规则。只有明确允许的规则升级，才应同步更新规则版本、快照基线和门禁策略。
+
+对于两个已经生成的完整 Benchmark 结果，也可以在本地做版本对比：
+
+```powershell
+python -m tools.run_benchmark_regression_gate `
+    --old-run data/processed/<old_run_name> `
+    --new-run data/processed/<new_run_name> `
+    --output .pytest_tmp_local/full_run_regression_gate.json
+```
+
+GitHub Actions 会在 pytest 通过后自动运行轻量门禁，因此规则代码、门禁配置或快照发生不兼容变化时，提交会直接变红。
+
 ## 来源溯源与采样策略
 
 来源注册表位于 `config/source_registry.json`。当前 HTML Benchmark v2 中的 34 条数据全部来自已登记来源：
@@ -297,6 +342,8 @@ tests/                        自动化测试
 - `reports/distribution_benchmark_summary.json`：数据分布统计
 - `reports/sampling_benchmark_summary.json`：采样计划统计
 - `reports/benchmark_compare_density_v2_vs_aggregation_v3.json`：规则版本对比报告
+- `config/benchmark_regression_policy.json`：回归门禁阈值与快照配置
+- `tools/run_benchmark_regression_gate.py`：回归门禁脚本
 - `reports/html_benchmark_v2_sampling_policy_*/`：实验/正式发布采样策略报告（本地生成）
 
 仓库有意忽略 `data/processed/` 以及较大的 Benchmark 原始数据文件，避免把可重新生成的中间结果和大文件提交到 GitHub。克隆仓库后可以直接安装依赖并运行全部自动化测试；如果要复现完整 Benchmark，需要先在本地准备对应的 `data/raw/` 数据文件。
@@ -338,7 +385,7 @@ GitHub Actions 会在 Python 3.11 环境中自动安装核心依赖并运行全�
 python -m pytest -q
 ```
 
-当前已验证：`60 passed`。
+测试数量和门禁状态以 GitHub Actions 最新运行结果为准。
 
 Windows 环境下如果默认临时目录没有权限，可以使用项目目录下的临时目录：
 

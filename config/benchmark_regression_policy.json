@@ -1,0 +1,20 @@
+{
+  "version": "benchmark_gate_v1",
+  "rules_path": "config/quality_rules.json",
+  "fixture_features_path": "tests/fixtures/benchmark_gate_features.jsonl",
+  "fixture_baseline_path": "tests/fixtures/benchmark_gate_baseline.jsonl",
+  "expected_rule_version": "quality_rules_v3_content_density_aggregation",
+  "expected_total": 10,
+  "expected_decision_counts": {
+    "keep": 5,
+    "review": 2,
+    "reject": 3
+  },
+  "max_added_ids": 0,
+  "max_removed_ids": 0,
+  "max_decision_changes": 0,
+  "max_score_drop_per_document": 10,
+  "max_average_score_drop": 2,
+  "max_review_rate": 0.2,
+  "allowlisted_changes": []
+}

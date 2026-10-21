@@ -28,3 +28,10 @@ jobs:
         env:
           PYTHONPATH: .
         run: python -m pytest -q
+
+      - name: Run benchmark regression gate
+        env:
+          PYTHONPATH: .
+        run: >-
+          python -m tools.run_benchmark_regression_gate
+          --output .pytest_tmp_local/benchmark_regression_gate.json

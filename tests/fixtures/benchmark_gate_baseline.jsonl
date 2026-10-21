@@ -1,0 +1,10 @@
+{"id":"gate_001","expected_decision":"keep","expected_score":75,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_002","expected_decision":"keep","expected_score":90,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_003","expected_decision":"reject","expected_score":40,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_004","expected_decision":"reject","expected_score":50,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_005","expected_decision":"reject","expected_score":15,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_006","expected_decision":"review","expected_score":75,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_007","expected_decision":"keep","expected_score":90,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_008","expected_decision":"keep","expected_score":75,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_009","expected_decision":"keep","expected_score":75,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
+{"id":"gate_010","expected_decision":"review","expected_score":40,"quality_rule_version":"quality_rules_v3_content_density_aggregation"}
