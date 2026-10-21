@@ -25,6 +25,9 @@ Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v
 - 修复、恢复和规则消融实验
 - 语言、主题、长度和质量分布统计
 - 采样资格判断与采样权重分配
+- 数据集来源注册与许可证状态记录
+- 数据溯源信息传播（数据集版本、流水线版本、运行 ID）
+- 区分实验采样与正式发布采样的来源策略
 - Benchmark 汇总报告生成
 - 真实网页 HTML Benchmark v2 验证
 - 内容密度优先评分
@@ -39,8 +42,9 @@ Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v
 - 更大规模、更多网页类型的人工审核集
 - 真实网页中的导航、广告、页脚和 Cookie 模板验证
 - 更可靠的领域/主题分类器
-- 自动化回归测试和 CI 运行
-- 生产环境下的数据来源、许可证和溯源管理
+- 更大规模 Benchmark 的自动化回归对比
+- 来源许可证的实际核验（当前样本仍为 `to_verify`）
+- 多来源、多语言数据的采样配比优化
 
 ## Pipeline 流程
 
@@ -49,6 +53,9 @@ Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v
         |
         v
 数据集 schema 检查
+        |
+        v
+来源注册与许可证状态检查
         |
         v
 HTML 正文抽取与清洗
@@ -71,7 +78,8 @@ HTML 正文抽取与清洗
         +--> 人工审核评估
         +--> 规则消融实验
         +--> 语言/主题/长度分布
-        +--> 采样计划与权重
+        +--> 实验采样计划与权重
+        +--> 正式发布采样策略检查
         |
         v
 Benchmark 汇总报告
@@ -180,6 +188,64 @@ Benchmark 汇总报告
 - `data/processed/html_benchmark_v2_aggregation_v3`
 - `reports/html_benchmark_v2_aggregation_v3`
 
+## 来源溯源与采样策略
+
+来源注册表位于 `config/source_registry.json`。当前 HTML Benchmark v2 中的 34 条数据全部来自已登记来源：
+
+- `docs.python.org`
+- `peps.python.org`
+- `scikit-learn.org`
+- `developer.mozilla.org`
+- `en.wikipedia.org`
+- `zh.wikipedia.org`
+- `blog.python.org`
+- `pytorch.org`
+- `python.org`
+
+当前来源报告结果：
+
+| 指标 | 数量 |
+| --- | ---: |
+| 已登记来源数据 | 34 |
+| 未登记来源数据 | 0 |
+| 许可证状态为 `to_verify` | 34 |
+| 实验可用数据 | 34 |
+| 正式发布可用数据 | 0 |
+
+`to_verify` 表示项目记录了来源和许可证查询入口，但尚未确认该来源是否可以用于正式训练数据发布。项目不会把这种状态误标为已授权。
+
+采样支持两种范围：
+
+- `experiment`：用于规则实验和质量分析，许可证待确认的数据仍可以参与采样；
+- `release`：用于正式发布候选集，只允许 `release_eligible=true` 的数据。
+
+在当前 34 条 HTML Benchmark 上：
+
+| 采样范围 | 可采样 | 质量排除 | 来源策略排除 |
+| --- | ---: | ---: | ---: |
+| `experiment` | 26 | 8 | 0 |
+| `release` | 0 | 8 | 26 |
+
+正式发布模式中 26 条数据被排除的原因是 `license_not_verified`，这不会删除数据，也不会改变质量评分结果。
+
+版本化运行示例：
+
+```powershell
+$env:BENCHMARK_DATASET_PATH = "data/raw/html_benchmark_v2.jsonl"
+$env:BENCHMARK_LABELS_PATH = ""
+$env:BENCHMARK_ENABLE_AUDIT = "0"
+
+$env:BENCHMARK_RUN_NAME = "html_benchmark_v2_sampling_policy_experiment_v1"
+$env:SAMPLING_SCOPE = "experiment"
+python -m tools.run_versioned_benchmark
+
+$env:BENCHMARK_RUN_NAME = "html_benchmark_v2_sampling_policy_release_v1"
+$env:SAMPLING_SCOPE = "release"
+python -m tools.run_versioned_benchmark
+```
+
+运行结果分别保存在 `data/processed/<run_name>/` 和 `reports/<run_name>/`，不会覆盖旧结果。
+
 ## 输入数据格式
 
 原始数据使用 JSONL，每行一个网页文档。必需字段：
@@ -211,6 +277,7 @@ Benchmark 汇总报告
 ```text
 app/pipeline/                 核心处理逻辑和基础运行脚本
 config/quality_rules.json     quality_rules_v3_content_density_aggregation 规则配置
+config/source_registry.json   来源、许可证状态和使用策略配置
 data/raw/                     原始 JSONL 数据
 data/processed/               各阶段处理结果
 data/labels/                  人工审核标签
@@ -230,6 +297,7 @@ tests/                        自动化测试
 - `reports/distribution_benchmark_summary.json`：数据分布统计
 - `reports/sampling_benchmark_summary.json`：采样计划统计
 - `reports/benchmark_compare_density_v2_vs_aggregation_v3.json`：规则版本对比报告
+- `reports/html_benchmark_v2_sampling_policy_*/`：实验/正式发布采样策略报告（本地生成）
 
 仓库有意忽略 `data/processed/` 以及较大的 Benchmark 原始数据文件，避免把可重新生成的中间结果和大文件提交到 GitHub。克隆仓库后可以直接安装依赖并运行全部自动化测试；如果要复现完整 Benchmark，需要先在本地准备对应的 `data/raw/` 数据文件。
 
@@ -270,7 +338,7 @@ GitHub Actions 会在 Python 3.11 环境中自动安装核心依赖并运行全�
 python -m pytest -q
 ```
 
-当前已验证：`50 passed`。
+当前已验证：`60 passed`。
 
 Windows 环境下如果默认临时目录没有权限，可以使用项目目录下的临时目录：
 
@@ -327,8 +395,8 @@ Benchmark 专用脚本会生成带有 `_benchmark_v1` 后缀的结果，便于�
 
 ## 下一阶段计划
 
-1. 将 Benchmark 版本对比接入自动化回归测试。
+1. 核验主要来源的许可证状态，将必要来源从 `to_verify` 更新为明确的策略状态。
 2. 继续增加不同类型的真实网页 HTML 数据，但采用批量收集和分层抽样，不逐条人工处理。
-3. 补充数据来源、许可证、采集时间和处理版本等溯源信息。
-4. 增加 CI 自动运行测试和规则回归检查。
+3. 将 Benchmark 版本对比接入更大规模的自动化回归测试。
+4. 改进领域/主题分类和多语言分布分析。
 5. 规则稳定后，再评估是否加入轻量分类器或 LLM scorer，并与当前规则进行可重复的消融对比。
