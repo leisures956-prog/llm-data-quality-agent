@@ -1,0 +1,9 @@
+{
+  "total": 34,
+  "production_decision_source": "calibrated_scoring_v1",
+  "production_decision_counts": {
+    "keep": 26,
+    "reject": 8
+  },
+  "review_ids": []
+}

@@ -1,0 +1,16 @@
+{"id":"doc_001","human_decision":"keep","is_false_rejection":false,"action":"retain_representative","reason":"正文内容有效，与doc_007近似重复，保留本条作为代表"}
+{"id":"doc_002","human_decision":"reject","is_false_rejection":false,"action":"remove_short","reason":"正文过短，信息量不足"}
+{"id":"doc_003","human_decision":"reject","is_false_rejection":false,"action":"remove_navigation","reason":"主要是广告和导航内容"}
+{"id":"doc_004","human_decision":"reject","is_false_rejection":false,"action":"remove_repeated","reason":"正文重复比例过高"}
+{"id":"doc_007","human_decision":"reject","is_false_rejection":false,"action":"remove_near_duplicate","reason":"与doc_001高度相似，保留doc_001"}
+{"id":"doc_008","human_decision":"keep","is_false_rejection":true,"action":"keep_short_informative","reason":"文本较短但语义完整，具有数据质量知识价值"}
+{"id":"wiki_zh_0013","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"社会学百科正文完整"}
+{"id":"wiki_en_0012","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"英文百科正文完整"}
+{"id":"wiki_zh_0016","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"物理学百科正文完整"}
+{"id":"wiki_zh_0005","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"计算机科学百科正文完整"}
+{"id":"wiki_en_0006","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"人物百科正文完整"}
+{"id":"wiki_zh_0018","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"力学百科正文完整"}
+{"id":"wiki_zh_0007","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"戏剧百科正文完整"}
+{"id":"wiki_en_0018","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"国家百科正文完整"}
+{"id":"wiki_en_0010","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"电影领域百科正文完整"}
+{"id":"wiki_zh_0006","human_decision":"keep","is_false_rejection":false,"action":"retain_article","reason":"民族主题百科正文完整"}

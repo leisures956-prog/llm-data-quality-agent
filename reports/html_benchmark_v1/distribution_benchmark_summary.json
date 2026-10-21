@@ -1,0 +1,29 @@
+{
+  "total": 8,
+  "language_counts": {
+    "en": 7,
+    "zh": 1
+  },
+  "detected_language_counts": {
+    "en": 7,
+    "zh": 1
+  },
+  "topic_counts": {
+    "technology": 8
+  },
+  "quality_counts": {
+    "review": 6,
+    "keep": 2
+  },
+  "length_bucket_counts": {
+    "long": 8
+  },
+  "language_topic_counts": {
+    "en": {
+      "technology": 7
+    },
+    "zh": {
+      "technology": 1
+    }
+  }
+}

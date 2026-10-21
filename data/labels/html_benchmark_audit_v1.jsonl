@@ -1,0 +1,8 @@
+{"id":"html_001","human_decision":"keep","is_false_rejection":true,"action":"retain","reason":"正文为完整的 Python 入门教程，内容连贯且具有明确知识价值；虽然链接比例和模板删除比例较高，但主体不是导航或广告。"}
+{"id":"html_002","human_decision":"keep","is_false_rejection":false,"action":"retain","reason":"正文完整，内容为 Python 编码规范，结构清晰，具有较高知识价值"}
+{"id":"html_003","human_decision":"reject","is_false_rejection":false,"action":"remove_navigation","reason":"页面主要由用户指南目录和链接组成，缺少连续正文，信息密度较低，属于导航/索引页"}
+{"id":"html_004","human_decision":"keep","is_false_rejection":false,"action":"retain","reason":"正文完整，系统介绍 HTML 的定义、作用、结构及其与 CSS、JavaScript 的关系，内容连贯且具有知识价值"}
+{"id":"html_005","human_decision":"keep","is_false_rejection":false,"action":"retain","reason":"系统介绍 HTML 的基本结构及常用标签，涵盖文本排版、图片嵌入、列表和链接创建，内容清晰，适合入门学习"}
+{"id":"html_006","human_decision":"keep","is_false_rejection":false,"action":"retain","reason":"内容系统介绍人工智能的定义、发展历程、研究方法、主要应用及潜在风险，正文完整，具有较高百科知识价值"}
+{"id":"html_007","human_decision":"keep","is_false_rejection":false,"action":"retain","reason":"系统介绍人工智能的定义、发展历程、核心技术及应用领域，涵盖机器学习、自然语言处理、智能决策等，并讨论人工智能的伦理风险、社会影响与监管问题。"}
+{"id":"html_008","human_decision":"keep","is_false_rejection":false,"action":"retain","reason":"介绍 Python asyncio 异步 I/O 库的定义、核心功能及应用场景，涵盖协程并发、网络 I/O、事件循环和任务同步等。"}

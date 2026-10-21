@@ -1,0 +1,93 @@
+{
+    "version": "quality_rules_v3_content_density_aggregation",
+    "base_score": 50,
+    "score_bounds": {
+      "min": 0,
+      "max": 100
+    },
+    "length": {
+      "long_min_chars": 100,
+      "long_bonus": 25,
+      "normal_min_chars": 50,
+      "normal_bonus": 10,
+      "short_min_chars": 25,
+      "short_penalty": 20,
+      "short_informative_bonus": 10,
+      "very_short_penalty": 20,
+      "short_informative": {
+        "title_body_overlap_min": 0.8,
+        "repeated_line_ratio_max": 0.2,
+        "removed_text_ratio_max": 0.5
+      }
+    },
+    "repetition": {
+      "high_ratio": 0.5,
+      "high_penalty": 30,
+      "medium_ratio": 0.2,
+      "medium_penalty": 15
+    },
+    "removed_text": {
+      "high_ratio": 0.7,
+      "high_penalty": 25,
+      "medium_ratio": 0.5,
+      "medium_penalty": 10
+    },
+    "title_body_overlap": {
+      "low_ratio": 0.2,
+      "low_penalty": 15,
+      "medium_ratio": 0.5,
+      "medium_penalty": 5
+    },
+    "link_ratio": {
+      "high_ratio": 0.4,
+      "high_penalty": 15
+    },
+    "content_density": {
+      "rich_min_chars": 3000,
+      "rich_min_paragraphs": 15,
+      "rich_min_sentences": 30,
+      "rich_bonus": 15
+    },
+    "navigation": {
+      "high_link_ratio": 0.8,
+      "high_link_max_paragraphs": 12,
+      "medium_link_ratio": 0.6,
+      "medium_link_max_paragraphs": 10,
+      "medium_link_max_sentences": 20,
+      "thin_max_chars": 1200,
+      "thin_min_paragraphs": 5,
+      "thin_max_sentences": 20,
+      "thin_min_link_ratio": 0.25,
+      "small_index_max_chars": 1800,
+      "small_index_min_paragraphs": 4,
+      "small_index_max_sentences": 12,
+      "small_index_min_link_ratio": 0.4,
+      "score_penalty": 20
+    },
+    "aggregation": {
+      "title_terms": [
+        "blog",
+        "blogs",
+        "insider",
+        "latest news",
+        "news"
+      ],
+      "max_title_words": 5,
+      "min_paragraphs": 10,
+      "max_average_paragraph_chars": 250,
+      "min_link_ratio": 0.2,
+      "score_penalty": 25
+    },
+    "review_budget": {
+      "max_rate": 0.2,
+      "minimum_review_count": 1,
+      "overflow_keep_margin": 10
+    },
+    "decision": {
+      "keep_min_score": 70,
+      "review_min_score": 30
+    },
+    "near_duplicate": {
+      "non_reject_decision": "review"
+    }
+  }

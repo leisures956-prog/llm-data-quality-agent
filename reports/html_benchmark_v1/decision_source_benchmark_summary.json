@@ -1,0 +1,16 @@
+{
+  "total": 8,
+  "production_decision_source": "calibrated_scoring_v1",
+  "production_decision_counts": {
+    "review": 6,
+    "keep": 2
+  },
+  "review_ids": [
+    "html_001",
+    "html_003",
+    "html_004",
+    "html_005",
+    "html_006",
+    "html_007"
+  ]
+}

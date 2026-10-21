@@ -1,0 +1,14 @@
+{
+  "total": 47,
+  "production_decision_source": "calibrated_scoring_v1",
+  "production_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 41
+  },
+  "review_ids": [
+    "doc_001",
+    "doc_007",
+    "doc_008"
+  ]
+}

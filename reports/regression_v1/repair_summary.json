@@ -1,0 +1,20 @@
+{
+  "total": 7,
+  "repaired_document_count": 2,
+  "score_improved_count": 1,
+  "decision_changed_count": 0,
+  "before_decision_counts": {
+    "review": 2,
+    "reject": 4,
+    "keep": 1
+  },
+  "post_repair_decision_counts": {
+    "review": 2,
+    "reject": 4,
+    "keep": 1
+  },
+  "repair_action_counts": {
+    "remove_boilerplate_line": 1,
+    "remove_repeated_line": 1
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "benchmark_version": "html_benchmark_v1",
+  "dataset_path": "data\\raw\\html_benchmark_v1.jsonl",
+  "audit_enabled": false,
+  "reports": {
+    "dataset_manifest.json": {
+      "path": "reports\\html_benchmark_v1\\dataset_manifest.json",
+      "content": {
+        "schema_version": "raw_web_v1",
+        "dataset_path": "data\\raw\\html_benchmark_v1.jsonl",
+        "summary": {
+          "total": 8,
+          "language_counts": {
+            "en": 7,
+            "zh": 1
+          },
+          "domain_counts": {
+            "documentation": 6,
+            "encyclopedia": 2
+          },
+          "duplicate_ids": [],
+          "recommended_metadata_missing": {},
+          "valid_count": 8,
+          "invalid_count": 0
+        },
+        "errors": []
+      }
+    },
+    "near_duplicate_pairs.jsonl": {
+      "path": "reports\\html_benchmark_v1\\near_duplicate_pairs.jsonl",
+      "record_count": 0,
+      "records": []
+    },
+    "quality_summary.json": {
+      "path": "reports\\html_benchmark_v1\\quality_summary.json",
+      "content": {
+        "total": 8,
+        "decision_counts": {
+          "reject": 1,
+          "keep": 2,
+          "review": 5
+        },
+        "average_score": 60.62
+      }
+    },
+    "calibrated_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v1\\calibrated_benchmark_summary.json",
+      "content": {
+        "total": 8,
+        "rule_version": "quality_rules_v1",
+        "content_decision_counts": {
+          "review": 6,
+          "keep": 2
+        },
+        "calibrated_decision_counts": {
+          "review": 6,
+          "keep": 2
+        },
+        "duplicate_status_counts": {
+          "unique": 8
+        },
+        "review_ids": [
+          "html_001",
+          "html_003",
+          "html_004",
+          "html_005",
+          "html_006",
+          "html_007"
+        ]
+      }
+    },
+    "decision_source_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v1\\decision_source_benchmark_summary.json",
+      "content": {
+        "total": 8,
+        "production_decision_source": "calibrated_scoring_v1",
+        "production_decision_counts": {
+          "review": 6,
+          "keep": 2
+        },
+        "review_ids": [
+          "html_001",
+          "html_003",
+          "html_004",
+          "html_005",
+          "html_006",
+          "html_007"
+        ]
+      }
+    },
+    "distribution_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v1\\distribution_benchmark_summary.json",
+      "content": {
+        "total": 8,
+        "language_counts": {
+          "en": 7,
+          "zh": 1
+        },
+        "detected_language_counts": {
+          "en": 7,
+          "zh": 1
+        },
+        "topic_counts": {
+          "technology": 8
+        },
+        "quality_counts": {
+          "review": 6,
+          "keep": 2
+        },
+        "length_bucket_counts": {
+          "long": 8
+        },
+        "language_topic_counts": {
+          "en": {
+            "technology": 7
+          },
+          "zh": {
+            "technology": 1
+          }
+        }
+      }
+    },
+    "sampling_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v1\\sampling_benchmark_summary.json",
+      "content": {
+        "total": 8,
+        "eligible_count": 8,
+        "excluded_count": 0,
+        "total_sampling_weight": 2.201,
+        "group_stats": {
+          "en::technology": {
+            "total": 7,
+            "eligible": 7,
+            "total_weight": 1.701
+          },
+          "zh::technology": {
+            "total": 1,
+            "eligible": 1,
+            "total_weight": 0.5
+          }
+        }
+      }
+    }
+  },
+  "missing_reports": []
+}

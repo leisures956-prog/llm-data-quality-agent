@@ -1,0 +1,20 @@
+{
+  "total": 7,
+  "content_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 1
+  },
+  "calibrated_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 1
+  },
+  "duplicate_status_counts": {
+    "near_duplicate": 2,
+    "unique": 5
+  },
+  "false_rejection_count": 0,
+  "false_acceptance_count": 0,
+  "review_keep_count": 2
+}

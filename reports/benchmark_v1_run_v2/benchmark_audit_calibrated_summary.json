@@ -1,0 +1,91 @@
+{
+  "total": 16,
+  "machine_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 10
+  },
+  "human_decision_counts": {
+    "keep": 12,
+    "reject": 4
+  },
+  "confusion_matrix": {
+    "keep": {
+      "keep": 10,
+      "reject": 0
+    },
+    "review": {
+      "keep": 2,
+      "reject": 1
+    },
+    "reject": {
+      "keep": 0,
+      "reject": 3
+    }
+  },
+  "strict_keep_metrics": {
+    "total": 16,
+    "true_positive": 10,
+    "false_positive": 0,
+    "false_negative": 2,
+    "true_negative": 4,
+    "accuracy": 0.875,
+    "precision": 1.0,
+    "recall": 0.8333,
+    "f1": 0.9091
+  },
+  "false_rejection_count": 0,
+  "false_acceptance_count": 0,
+  "review_count": 3,
+  "review_keep_count": 2,
+  "review_reject_count": 1,
+  "by_language": {
+    "zh": {
+      "total": 12,
+      "true_positive": 6,
+      "false_positive": 0,
+      "false_negative": 2,
+      "true_negative": 4,
+      "accuracy": 0.8333,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571
+    },
+    "en": {
+      "total": 4,
+      "true_positive": 4,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "by_topic": {
+    "other": {
+      "total": 16,
+      "true_positive": 10,
+      "false_positive": 0,
+      "false_negative": 2,
+      "true_negative": 4,
+      "accuracy": 0.875,
+      "precision": 1.0,
+      "recall": 0.8333,
+      "f1": 0.9091
+    }
+  },
+  "decision_source": "calibrated_scoring_v1",
+  "audit_source": {
+    "scored_file": "data\\processed\\benchmark_v1_run_v2\\quality_scored.jsonl",
+    "labels_file": "data\\labels\\benchmark_audit_v1.jsonl",
+    "labeled_count": 16
+  },
+  "calibrated_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 10
+  },
+  "manual_false_rejection_labels": 1
+}

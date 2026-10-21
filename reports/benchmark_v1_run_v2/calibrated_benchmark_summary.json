@@ -1,0 +1,23 @@
+{
+  "total": 47,
+  "rule_version": "quality_rules_v1",
+  "content_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 41
+  },
+  "calibrated_decision_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 41
+  },
+  "duplicate_status_counts": {
+    "near_duplicate": 2,
+    "unique": 45
+  },
+  "review_ids": [
+    "doc_001",
+    "doc_007",
+    "doc_008"
+  ]
+}

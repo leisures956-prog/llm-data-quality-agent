@@ -1,0 +1,23 @@
+{
+  "schema_version": "raw_web_v1",
+  "dataset_path": "data\\raw\\html_benchmark_v2.jsonl",
+  "summary": {
+    "total": 34,
+    "language_counts": {
+      "en": 31,
+      "zh": 3
+    },
+    "domain_counts": {
+      "documentation": 18,
+      "encyclopedia": 8,
+      "navigation": 4,
+      "blog": 3,
+      "news": 1
+    },
+    "duplicate_ids": [],
+    "recommended_metadata_missing": {},
+    "valid_count": 34,
+    "invalid_count": 0
+  },
+  "errors": []
+}

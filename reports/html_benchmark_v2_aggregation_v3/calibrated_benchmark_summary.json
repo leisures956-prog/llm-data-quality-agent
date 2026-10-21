@@ -1,0 +1,19 @@
+{
+  "total": 34,
+  "rule_version": "quality_rules_v3_content_density_aggregation",
+  "content_decision_counts": {
+    "keep": 26,
+    "reject": 8
+  },
+  "calibrated_decision_counts": {
+    "keep": 26,
+    "reject": 8
+  },
+  "duplicate_status_counts": {
+    "unique": 34
+  },
+  "review_ids": [],
+  "review_rate": 0.0,
+  "review_budget_rate": 0.2,
+  "review_budget_exceeded": false
+}

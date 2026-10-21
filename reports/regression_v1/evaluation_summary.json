@@ -1,0 +1,112 @@
+{
+  "total": 7,
+  "machine_decision_counts": {
+    "review": 2,
+    "reject": 4,
+    "keep": 1
+  },
+  "human_decision_counts": {
+    "keep": 3,
+    "reject": 4
+  },
+  "confusion_matrix": {
+    "keep": {
+      "keep": 1,
+      "reject": 0
+    },
+    "review": {
+      "keep": 1,
+      "reject": 1
+    },
+    "reject": {
+      "keep": 1,
+      "reject": 3
+    }
+  },
+  "strict_keep_metrics": {
+    "total": 7,
+    "true_positive": 1,
+    "false_positive": 0,
+    "false_negative": 2,
+    "true_negative": 4,
+    "accuracy": 0.7143,
+    "precision": 1.0,
+    "recall": 0.3333,
+    "f1": 0.5
+  },
+  "false_rejection_count": 1,
+  "false_acceptance_count": 0,
+  "review_count": 2,
+  "review_keep_count": 1,
+  "review_reject_count": 1,
+  "by_language": {
+    "zh": {
+      "total": 6,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 2,
+      "true_negative": 4,
+      "accuracy": 0.6667,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "en": {
+      "total": 1,
+      "true_positive": 1,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "by_topic": {
+    "technology": {
+      "total": 4,
+      "true_positive": 1,
+      "false_positive": 0,
+      "false_negative": 2,
+      "true_negative": 1,
+      "accuracy": 0.5,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "f1": 0.5
+    },
+    "news": {
+      "total": 1,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 1,
+      "accuracy": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "navigation": {
+      "total": 1,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 1,
+      "accuracy": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "forum": {
+      "total": 1,
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 1,
+      "accuracy": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  }
+}

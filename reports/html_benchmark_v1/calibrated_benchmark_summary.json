@@ -1,0 +1,23 @@
+{
+  "total": 8,
+  "rule_version": "quality_rules_v1",
+  "content_decision_counts": {
+    "review": 6,
+    "keep": 2
+  },
+  "calibrated_decision_counts": {
+    "review": 6,
+    "keep": 2
+  },
+  "duplicate_status_counts": {
+    "unique": 8
+  },
+  "review_ids": [
+    "html_001",
+    "html_003",
+    "html_004",
+    "html_005",
+    "html_006",
+    "html_007"
+  ]
+}

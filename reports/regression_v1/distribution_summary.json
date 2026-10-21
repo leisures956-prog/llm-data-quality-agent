@@ -1,0 +1,38 @@
+{
+  "total": 7,
+  "language_counts": {
+    "zh": 6,
+    "en": 1
+  },
+  "detected_language_counts": {
+    "zh": 5,
+    "unknown": 1,
+    "en": 1
+  },
+  "topic_counts": {
+    "technology": 4,
+    "news": 1,
+    "navigation": 1,
+    "forum": 1
+  },
+  "quality_counts": {
+    "review": 3,
+    "reject": 3,
+    "keep": 1
+  },
+  "length_bucket_counts": {
+    "medium": 3,
+    "short": 4
+  },
+  "language_topic_counts": {
+    "zh": {
+      "technology": 3,
+      "news": 1,
+      "navigation": 1,
+      "forum": 1
+    },
+    "en": {
+      "technology": 1
+    }
+  }
+}

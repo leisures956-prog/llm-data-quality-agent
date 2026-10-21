@@ -1,0 +1,43 @@
+{
+  "total": 34,
+  "eligible_count": 26,
+  "excluded_count": 8,
+  "total_sampling_weight": 9.5862,
+  "group_stats": {
+    "en::technology": {
+      "total": 20,
+      "eligible": 15,
+      "total_weight": 3.354
+    },
+    "en::education": {
+      "total": 4,
+      "eligible": 4,
+      "total_weight": 2.0
+    },
+    "en::other": {
+      "total": 4,
+      "eligible": 3,
+      "total_weight": 1.5
+    },
+    "en::medicine": {
+      "total": 1,
+      "eligible": 1,
+      "total_weight": 1.0
+    },
+    "zh::technology": {
+      "total": 3,
+      "eligible": 3,
+      "total_weight": 1.7322
+    },
+    "en::navigation": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "en::news": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    }
+  }
+}

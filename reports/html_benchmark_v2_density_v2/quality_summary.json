@@ -1,0 +1,8 @@
+{
+  "total": 34,
+  "decision_counts": {
+    "keep": 27,
+    "reject": 7
+  },
+  "average_score": 75.88
+}

@@ -1,0 +1,68 @@
+{
+  "total": 47,
+  "eligible_count": 44,
+  "excluded_count": 3,
+  "total_sampling_weight": 18.0186,
+  "group_stats": {
+    "zh::technology": {
+      "total": 10,
+      "eligible": 10,
+      "total_weight": 2.6877
+    },
+    "zh::news": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "zh::navigation": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "zh::forum": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "en::technology": {
+      "total": 7,
+      "eligible": 7,
+      "total_weight": 2.646
+    },
+    "zh::education": {
+      "total": 6,
+      "eligible": 6,
+      "total_weight": 2.4492
+    },
+    "zh::other": {
+      "total": 5,
+      "eligible": 5,
+      "total_weight": 2.236
+    },
+    "zh::medicine": {
+      "total": 1,
+      "eligible": 1,
+      "total_weight": 1.0
+    },
+    "zh::finance": {
+      "total": 1,
+      "eligible": 1,
+      "total_weight": 1.0
+    },
+    "en::education": {
+      "total": 9,
+      "eligible": 9,
+      "total_weight": 2.9997
+    },
+    "en::other": {
+      "total": 4,
+      "eligible": 4,
+      "total_weight": 2.0
+    },
+    "en::finance": {
+      "total": 1,
+      "eligible": 1,
+      "total_weight": 1.0
+    }
+  }
+}

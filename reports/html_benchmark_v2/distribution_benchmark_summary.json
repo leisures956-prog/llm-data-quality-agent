@@ -1,0 +1,39 @@
+{
+  "total": 34,
+  "language_counts": {
+    "en": 31,
+    "zh": 3
+  },
+  "detected_language_counts": {
+    "en": 31,
+    "zh": 3
+  },
+  "topic_counts": {
+    "technology": 23,
+    "education": 4,
+    "other": 4,
+    "medicine": 1,
+    "navigation": 1,
+    "news": 1
+  },
+  "quality_counts": {
+    "keep": 20,
+    "review": 14
+  },
+  "length_bucket_counts": {
+    "long": 34
+  },
+  "language_topic_counts": {
+    "en": {
+      "technology": 20,
+      "education": 4,
+      "other": 4,
+      "medicine": 1,
+      "navigation": 1,
+      "news": 1
+    },
+    "zh": {
+      "technology": 3
+    }
+  }
+}

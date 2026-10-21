@@ -1,0 +1,200 @@
+{
+  "benchmark_version": "html_benchmark_v2",
+  "dataset_path": "data\\raw\\html_benchmark_v2.jsonl",
+  "audit_enabled": false,
+  "reports": {
+    "dataset_manifest.json": {
+      "path": "reports\\html_benchmark_v2\\dataset_manifest.json",
+      "content": {
+        "schema_version": "raw_web_v1",
+        "dataset_path": "data\\raw\\html_benchmark_v2.jsonl",
+        "summary": {
+          "total": 34,
+          "language_counts": {
+            "en": 31,
+            "zh": 3
+          },
+          "domain_counts": {
+            "documentation": 18,
+            "encyclopedia": 8,
+            "navigation": 4,
+            "blog": 3,
+            "news": 1
+          },
+          "duplicate_ids": [],
+          "recommended_metadata_missing": {},
+          "valid_count": 34,
+          "invalid_count": 0
+        },
+        "errors": []
+      }
+    },
+    "near_duplicate_pairs.jsonl": {
+      "path": "reports\\html_benchmark_v2\\near_duplicate_pairs.jsonl",
+      "record_count": 0,
+      "records": []
+    },
+    "quality_summary.json": {
+      "path": "reports\\html_benchmark_v2\\quality_summary.json",
+      "content": {
+        "total": 34,
+        "decision_counts": {
+          "keep": 20,
+          "review": 11,
+          "reject": 3
+        },
+        "average_score": 65.88
+      }
+    },
+    "calibrated_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v2\\calibrated_benchmark_summary.json",
+      "content": {
+        "total": 34,
+        "rule_version": "quality_rules_v1",
+        "content_decision_counts": {
+          "keep": 20,
+          "review": 14
+        },
+        "calibrated_decision_counts": {
+          "keep": 20,
+          "review": 14
+        },
+        "duplicate_status_counts": {
+          "unique": 34
+        },
+        "review_ids": [
+          "html_v2_014",
+          "html_v2_015",
+          "html_v2_017",
+          "html_v2_018",
+          "html_v2_024",
+          "html_v2_025",
+          "html_v2_026",
+          "html_v2_027",
+          "html_v2_028",
+          "html_v2_030",
+          "html_v2_031",
+          "html_v2_032",
+          "html_v2_033",
+          "html_v2_035"
+        ]
+      }
+    },
+    "decision_source_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v2\\decision_source_benchmark_summary.json",
+      "content": {
+        "total": 34,
+        "production_decision_source": "calibrated_scoring_v1",
+        "production_decision_counts": {
+          "keep": 20,
+          "review": 14
+        },
+        "review_ids": [
+          "html_v2_014",
+          "html_v2_015",
+          "html_v2_017",
+          "html_v2_018",
+          "html_v2_024",
+          "html_v2_025",
+          "html_v2_026",
+          "html_v2_027",
+          "html_v2_028",
+          "html_v2_030",
+          "html_v2_031",
+          "html_v2_032",
+          "html_v2_033",
+          "html_v2_035"
+        ]
+      }
+    },
+    "distribution_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v2\\distribution_benchmark_summary.json",
+      "content": {
+        "total": 34,
+        "language_counts": {
+          "en": 31,
+          "zh": 3
+        },
+        "detected_language_counts": {
+          "en": 31,
+          "zh": 3
+        },
+        "topic_counts": {
+          "technology": 23,
+          "education": 4,
+          "other": 4,
+          "medicine": 1,
+          "navigation": 1,
+          "news": 1
+        },
+        "quality_counts": {
+          "keep": 20,
+          "review": 14
+        },
+        "length_bucket_counts": {
+          "long": 34
+        },
+        "language_topic_counts": {
+          "en": {
+            "technology": 20,
+            "education": 4,
+            "other": 4,
+            "medicine": 1,
+            "navigation": 1,
+            "news": 1
+          },
+          "zh": {
+            "technology": 3
+          }
+        }
+      }
+    },
+    "sampling_benchmark_summary.json": {
+      "path": "reports\\html_benchmark_v2\\sampling_benchmark_summary.json",
+      "content": {
+        "total": 34,
+        "eligible_count": 34,
+        "excluded_count": 0,
+        "total_sampling_weight": 9.7791,
+        "group_stats": {
+          "en::technology": {
+            "total": 20,
+            "eligible": 20,
+            "total_weight": 3.913
+          },
+          "en::education": {
+            "total": 4,
+            "eligible": 4,
+            "total_weight": 1.5
+          },
+          "en::other": {
+            "total": 4,
+            "eligible": 4,
+            "total_weight": 1.5
+          },
+          "en::medicine": {
+            "total": 1,
+            "eligible": 1,
+            "total_weight": 1.0
+          },
+          "zh::technology": {
+            "total": 3,
+            "eligible": 3,
+            "total_weight": 0.8661
+          },
+          "en::navigation": {
+            "total": 1,
+            "eligible": 1,
+            "total_weight": 0.5
+          },
+          "en::news": {
+            "total": 1,
+            "eligible": 1,
+            "total_weight": 0.5
+          }
+        }
+      }
+    }
+  },
+  "missing_reports": []
+}

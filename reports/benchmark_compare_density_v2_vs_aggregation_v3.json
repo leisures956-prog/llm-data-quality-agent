@@ -1,0 +1,77 @@
+{
+  "old": {
+    "result_file": "data\\processed\\html_benchmark_v2_density_v2\\production_decisions_benchmark_v1.jsonl",
+    "total": 34,
+    "decision_counts": {
+      "keep": 27,
+      "reject": 7
+    },
+    "rule_versions": [
+      "quality_rules_v2_content_density"
+    ]
+  },
+  "new": {
+    "result_file": "data\\processed\\html_benchmark_v2_aggregation_v3\\production_decisions_benchmark_v1.jsonl",
+    "total": 34,
+    "decision_counts": {
+      "keep": 26,
+      "reject": 8
+    },
+    "rule_versions": [
+      "quality_rules_v3_content_density_aggregation"
+    ]
+  },
+  "decision_delta": {
+    "keep": -1,
+    "reject": 1
+  },
+  "decision_changes": [
+    {
+      "id": "html_v2_034",
+      "title": "MDN Blog",
+      "before_decision": "keep",
+      "after_decision": "reject",
+      "before_score": 90,
+      "after_score": 65
+    }
+  ],
+  "score_changes": [
+    {
+      "id": "html_v2_031",
+      "title": "Python Insider",
+      "before_score": 45,
+      "after_score": 20,
+      "score_delta": -25
+    },
+    {
+      "id": "html_v2_034",
+      "title": "MDN Blog",
+      "before_score": 90,
+      "after_score": 65,
+      "score_delta": -25
+    }
+  ],
+  "reason_changes": [
+    {
+      "id": "html_v2_031",
+      "title": "Python Insider",
+      "added_reasons": [
+        "页面疑似博客或文章聚合页"
+      ],
+      "removed_reasons": []
+    },
+    {
+      "id": "html_v2_034",
+      "title": "MDN Blog",
+      "added_reasons": [
+        "页面疑似博客或文章聚合页"
+      ],
+      "removed_reasons": []
+    }
+  ],
+  "new_reason_counts": {
+    "页面疑似博客或文章聚合页": 2
+  },
+  "added_ids": [],
+  "removed_ids": []
+}

@@ -1,0 +1,33 @@
+{
+  "total": 7,
+  "eligible_count": 4,
+  "excluded_count": 3,
+  "total_sampling_weight": 1.8661,
+  "group_stats": {
+    "zh::technology": {
+      "total": 3,
+      "eligible": 3,
+      "total_weight": 0.8661
+    },
+    "zh::news": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "zh::navigation": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "zh::forum": {
+      "total": 1,
+      "eligible": 0,
+      "total_weight": 0.0
+    },
+    "en::technology": {
+      "total": 1,
+      "eligible": 1,
+      "total_weight": 1.0
+    }
+  }
+}
