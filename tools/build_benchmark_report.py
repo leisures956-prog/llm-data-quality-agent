@@ -68,6 +68,34 @@ for name, filename in report_files.items():
         }
 
 
+manifest_report = bundle[
+    "reports"
+].get(
+    "dataset_manifest",
+    {},
+)
+
+manifest_content = manifest_report.get(
+    "content",
+    {},
+)
+
+bundle["provenance"] = manifest_content.get(
+    "provenance",
+    {},
+)
+
+bundle["dataset_metadata"] = (
+    manifest_content.get(
+        "summary",
+        {},
+    ).get(
+        "metadata",
+        {},
+    )
+)
+
+
 output_path.write_text(
     json.dumps(
         bundle,

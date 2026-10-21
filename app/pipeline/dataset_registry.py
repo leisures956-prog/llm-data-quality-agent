@@ -15,6 +15,12 @@ RECOMMENDED_FIELDS = {
     "license",
 }
 
+PROVENANCE_FIELDS = (
+    "source",
+    "collected_at",
+    "license",
+)
+
 
 def validate_raw_document(
     document: dict,
@@ -48,6 +54,20 @@ def validate_raw_document(
     return errors
 
 
+def get_missing_metadata_fields(
+    document: dict,
+) -> list[str]:
+    missing_fields = []
+
+    for field in PROVENANCE_FIELDS:
+        value = document.get(field)
+
+        if value is None or not str(value).strip():
+            missing_fields.append(field)
+
+    return missing_fields
+
+
 def summarize_dataset(
     documents: list[dict],
 ) -> dict:
@@ -73,13 +93,37 @@ def summarize_dataset(
     )
 
     recommended_missing_counts = Counter()
+    source_counts = Counter()
+    license_counts = Counter()
+    collected_at_counts = Counter()
+    metadata_complete_count = 0
 
     for document in documents:
-        for field in RECOMMENDED_FIELDS:
-            value = document.get(field)
+        missing_fields = get_missing_metadata_fields(
+            document
+        )
 
-            if value is None or not str(value).strip():
-                recommended_missing_counts[field] += 1
+        for field in missing_fields:
+            recommended_missing_counts[field] += 1
+
+        if not missing_fields:
+            metadata_complete_count += 1
+
+        source = str(
+            document.get("source") or ""
+        ).strip() or "unknown"
+
+        license_name = str(
+            document.get("license") or ""
+        ).strip() or "unknown"
+
+        collected_at = str(
+            document.get("collected_at") or ""
+        ).strip() or "unknown"
+
+        source_counts[source] += 1
+        license_counts[license_name] += 1
+        collected_at_counts[collected_at] += 1
 
     return {
         "total": len(documents),
@@ -93,4 +137,25 @@ def summarize_dataset(
         "recommended_metadata_missing": dict(
             recommended_missing_counts
         ),
+        "metadata": {
+            "complete_count": (
+                metadata_complete_count
+            ),
+            "incomplete_count": (
+                len(documents)
+                - metadata_complete_count
+            ),
+            "missing_field_counts": dict(
+                recommended_missing_counts
+            ),
+            "source_counts": dict(
+                source_counts
+            ),
+            "license_counts": dict(
+                license_counts
+            ),
+            "collected_at_counts": dict(
+                collected_at_counts
+            ),
+        },
     }

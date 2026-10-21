@@ -308,6 +308,33 @@ def build_lightweight_report(
                 ),
             }
 
+    manifest_report = bundle[
+        "reports"
+    ].get(
+        "dataset_manifest.json",
+        {},
+    )
+
+    manifest_content = manifest_report.get(
+        "content",
+        {},
+    )
+
+    bundle["provenance"] = manifest_content.get(
+        "provenance",
+        {},
+    )
+
+    bundle["dataset_metadata"] = (
+        manifest_content.get(
+            "summary",
+            {},
+        ).get(
+            "metadata",
+            {},
+        )
+    )
+
     output_path = (
         report_dir
         / f"{RUN_NAME}_run_report.json"
@@ -414,6 +441,11 @@ def main() -> None:
         environment["DATASET_PATH"] = (
             DATASET_PATH.as_posix()
         )
+        environment["DATASET_VERSION"] = RUN_NAME
+        environment["PIPELINE_VERSION"] = (
+            "quality_pipeline_v1"
+        )
+        environment["RUN_ID"] = RUN_NAME
         environment.pop(
             "DATASET_REPORT_PATH",
             None,

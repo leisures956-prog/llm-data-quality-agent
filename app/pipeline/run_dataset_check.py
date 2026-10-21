@@ -12,6 +12,21 @@ from app.pipeline.dataset_paths import (
 
 input_path = get_dataset_path()
 
+dataset_version = os.environ.get(
+    "DATASET_VERSION",
+    input_path.stem,
+)
+
+pipeline_version = os.environ.get(
+    "PIPELINE_VERSION",
+    "quality_pipeline_v1",
+)
+
+run_id = os.environ.get(
+    "RUN_ID",
+    dataset_version,
+)
+
 report_path = Path(
     os.environ.get(
         "DATASET_REPORT_PATH",
@@ -72,6 +87,11 @@ summary["invalid_count"] = len(
 payload = {
     "schema_version": "raw_web_v1",
     "dataset_path": str(input_path),
+    "provenance": {
+        "dataset_version": dataset_version,
+        "pipeline_version": pipeline_version,
+        "run_id": run_id,
+    },
     "summary": summary,
     "errors": errors,
 }

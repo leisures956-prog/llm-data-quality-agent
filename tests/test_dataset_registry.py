@@ -73,3 +73,50 @@ def test_dataset_summary():
         "technology": 1,
         "news": 1,
     }
+
+
+def test_dataset_summary_tracks_metadata():
+    documents = [
+        {
+            "id": "doc_001",
+            "language": "en",
+            "domain": "technology",
+            "html": "<html>content</html>",
+            "source": "example.com",
+            "collected_at": "2026-10-21",
+            "license": "CC-BY-4.0",
+        },
+        {
+            "id": "doc_002",
+            "language": "zh",
+            "domain": "news",
+            "html": "<html>内容</html>",
+            "source": "example.cn",
+        },
+    ]
+
+    summary = summarize_dataset(
+        documents
+    )
+
+    assert summary["metadata"][
+        "complete_count"
+    ] == 1
+
+    assert summary["metadata"][
+        "incomplete_count"
+    ] == 1
+
+    assert summary["metadata"][
+        "missing_field_counts"
+    ] == {
+        "collected_at": 1,
+        "license": 1,
+    }
+
+    assert summary["metadata"][
+        "source_counts"
+    ] == {
+        "example.com": 1,
+        "example.cn": 1,
+    }
