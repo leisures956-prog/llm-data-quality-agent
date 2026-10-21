@@ -1,5 +1,7 @@
 # LLM Web Data Quality Pipeline
 
+[![Tests](https://github.com/leisures956-prog/llm-data-quality-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/leisures956-prog/llm-data-quality-agent/actions/workflows/tests.yml)
+
 面向大语言模型预训练数据建设的数据质量处理项目。项目把原始网页数据转换为可审计、可评估、可采样的数据资产，重点覆盖网页正文抽取、特征计算、重复检测、质量评分、人工审核校准、数据分布分析和采样权重分配。
 
 这个项目对应的不是一个简单的“网页爬虫”，而是一条可解释的数据治理 pipeline：每条数据都会保留处理结果、质量分数、决策原因和必要的审计信息，便于回答“为什么保留、为什么拒绝、规则改动带来了什么影响”。
@@ -219,7 +221,7 @@ tests/                        自动化测试
 
 重要产物：
 
-- `data/raw/benchmark_v1.jsonl`：Benchmark v1 原始数据
+- `data/raw/benchmark_v1.jsonl`：Benchmark v1 原始数据（本地 Benchmark 文件，未提交到 GitHub）
 - `data/labels/benchmark_audit_v1.jsonl`：16 条人工审核标签
 - `data/processed/production_decisions_benchmark_v1.jsonl`：正式决策结果
 - `reports/benchmark_v1_run_report.json`：Benchmark 汇总报告
@@ -229,11 +231,36 @@ tests/                        自动化测试
 - `reports/sampling_benchmark_summary.json`：采样计划统计
 - `reports/benchmark_compare_density_v2_vs_aggregation_v3.json`：规则版本对比报告
 
+仓库有意忽略 `data/processed/` 以及较大的 Benchmark 原始数据文件，避免把可重新生成的中间结果和大文件提交到 GitHub。克隆仓库后可以直接安装依赖并运行全部自动化测试；如果要复现完整 Benchmark，需要先在本地准备对应的 `data/raw/` 数据文件。
+
 ## 运行环境
 
 项目当前在 Python 3.11 环境 `llm-data-quality311` 中开发和验证。项目不需要 GPU，也不依赖大模型即可运行当前 pipeline。
 
 请先进入项目根目录并激活自己的 Python 环境，再执行下面的命令。
+
+## 从 GitHub 安装
+
+克隆项目并安装核心依赖：
+
+```powershell
+git clone https://github.com/leisures956-prog/llm-data-quality-agent.git
+cd llm-data-quality-agent
+
+py -3.11 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+`requirements.txt` 包含正文抽取、特征计算、近似去重和测试所需的核心依赖。只有需要运行 Wikipedia 批量下载工具时，才需要额外安装：
+
+```powershell
+python -m pip install -r requirements-benchmark.txt
+```
+
+GitHub Actions 会在 Python 3.11 环境中自动安装核心依赖并运行全部 pytest 测试，配置文件位于 `.github/workflows/tests.yml`。
 
 ## 测试
 

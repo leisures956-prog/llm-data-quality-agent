@@ -1,0 +1,3 @@
+# Dependencies for optional benchmark download scripts.
+-r requirements.txt
+datasets>=3,<6

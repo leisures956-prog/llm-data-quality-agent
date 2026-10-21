@@ -1,0 +1,9 @@
+# Core HTML extraction and web data quality pipeline
+beautifulsoup4>=4.12,<5
+lxml>=5,<7
+trafilatura>=2,<3
+scikit-learn>=1.4,<2
+httpx>=0.27,<1
+
+# Test suite
+pytest>=8,<10
