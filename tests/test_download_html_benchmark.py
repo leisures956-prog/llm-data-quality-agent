@@ -37,12 +37,12 @@ def test_download_paths_can_be_versioned(monkeypatch):
 
     paths = get_download_paths()
 
-    assert str(paths["manifest"]).endswith(
-        "data\\raw\\html_urls_v3.jsonl"
+    assert paths["manifest"].as_posix().endswith(
+        "data/raw/html_urls_v3.jsonl"
     )
-    assert str(paths["output"]).endswith(
-        "data\\raw\\html_benchmark_v3.jsonl"
+    assert paths["output"].as_posix().endswith(
+        "data/raw/html_benchmark_v3.jsonl"
     )
-    assert str(paths["errors"]).endswith(
-        "data\\raw\\html_benchmark_v3_errors.jsonl"
+    assert paths["errors"].as_posix().endswith(
+        "data/raw/html_benchmark_v3_errors.jsonl"
     )
