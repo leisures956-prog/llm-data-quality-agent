@@ -201,6 +201,10 @@ HTML Benchmark v5 使用 35 条真实网页 HTML 数据，基线版本和输入�
 
 `reports/html_benchmark_v5_baseline_v1/baseline_lock.json`
 
+当前已验证的代码提交为 `e74a7b3`，GitHub Actions 已通过；版本和实验结论汇总在：
+
+`reports/html_benchmark_v5_baseline_v1/project1_release_summary_v1.json`
+
 基线生产决策分布如下：
 
 | 决策 | 数量 |
@@ -444,6 +448,7 @@ tests/                        自动化测试
 - `reports/html_benchmark_v5_baseline_v1/semantic_pair_real_eval_085.json`：语义去重对照评估
 - `reports/html_benchmark_v5_baseline_v1/performance_v1.json`：规模性能基线
 - `reports/html_benchmark_v5_baseline_v1/scaling_optimization_v1.json`：并行抽取和候选索引优化对照
+- `reports/html_benchmark_v5_baseline_v1/project1_release_summary_v1.json`：项目一版本与实验结论冻结摘要
 - `config/benchmark_regression_policy.json`：回归门禁阈值与快照配置
 - `tools/run_benchmark_regression_gate.py`：回归门禁脚本
 - `tools/evaluate_html_benchmark_v5.py`：v5 开发集/盲测集评估脚本

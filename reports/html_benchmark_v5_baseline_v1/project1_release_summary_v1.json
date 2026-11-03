@@ -1,0 +1,76 @@
+{
+  "release_summary_version": "project1_release_summary_v1",
+  "project": "LLM Web Data Quality Pipeline",
+  "validated_commit": "e74a7b3",
+  "branch": "main",
+  "ci_status": "passed",
+  "test_count": 111,
+  "baseline": {
+    "baseline_id": "html_benchmark_v5_baseline_v1",
+    "dataset_path": "data/raw/html_benchmark_v5_retry_v1.jsonl",
+    "dataset_sha256": "AE64140E24043F58FEC3DEB1D0C7F13A718B87712BB0094AF8132A90262DEE7C",
+    "document_count": 35,
+    "rule_version": "quality_rules_v3_content_density_aggregation",
+    "decision_counts": {
+      "keep": 26,
+      "review": 1,
+      "reject": 8
+    }
+  },
+  "evaluation": {
+    "development_count": 11,
+    "development_hard_false_rejection_rate": 0.0,
+    "development_false_acceptance_rate": 0.0,
+    "blind_count": 4,
+    "blind_hard_false_rejection_rate": 0.0,
+    "blind_false_acceptance_rate": 0.5,
+    "blind_review_rate": 0.25,
+    "blind_automatic_decision_coverage": 0.75,
+    "blind_bad_case": {
+      "id": "html_v3_018",
+      "type": "aggregation_page",
+      "description": "Accessibility 主题介绍页混合多个教程和参考入口，被系统直接保留。"
+    }
+  },
+  "experiments": {
+    "semantic_deduplication": {
+      "pair_count": 28,
+      "embedding_threshold": 0.85,
+      "embedding_precision": 1.0,
+      "embedding_recall": 1.0,
+      "embedding_f1": 1.0,
+      "production_threshold_changed": false
+    },
+    "llm_judge": {
+      "model": "qwen2.5:3b",
+      "labeled_count": 11,
+      "hard_false_rejection_count": 0,
+      "false_acceptance_count": 0,
+      "review_count": 7,
+      "automatic_decision_coverage": 0.3636,
+      "production_decision_source": false
+    },
+    "scaling": {
+      "parallel_extraction_speedup_at_10000_workers4": 1.9521,
+      "indexed_near_dedup_candidate_reduction": 0.0,
+      "indexed_near_dedup_pair_recall": 1.0,
+      "indexed_near_dedup_adopted": false,
+      "ray_adopted": false
+    }
+  },
+  "risk_scan": {
+    "document_count": 35,
+    "pii_risk_count": 2,
+    "source_risk_count": 0,
+    "license_risk_count": 35,
+    "contamination_risk_count": 0,
+    "license_status_note": "当前许可证状态仍为 to_verify，不能直接视为正式发布许可。"
+  },
+  "scope": {
+    "production_rules_modified": false,
+    "v5_raw_data_modified": false,
+    "production_decisions_modified": false,
+    "semantic_dedup_threshold_modified": false,
+    "next_recommended_action": "保持基线冻结；如需调规则，创建新规则版本和新的盲测留出集。"
+  }
+}
