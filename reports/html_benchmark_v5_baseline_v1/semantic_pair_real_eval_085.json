@@ -1,0 +1,484 @@
+{
+  "evaluation_version": "semantic_pair_eval_v1",
+  "pair_count": 28,
+  "pair_type_counts": {
+    "high_similarity_candidate": 14,
+    "cross_domain_negative_candidate": 6,
+    "real_exact_duplicate": 8
+  },
+  "label_counts": {
+    "non_duplicate": 20,
+    "duplicate": 8
+  },
+  "thresholds": {
+    "char_ngram": 0.75,
+    "embedding": 0.85
+  },
+  "embedding_model": "C:\\Users\\Leisu\\.cache\\huggingface\\hub\\models--sentence-transformers--paraphrase-multilingual-MiniLM-L12-v2\\snapshots\\e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "metrics": {
+    "exact": {
+      "total": 28,
+      "predicted_duplicate_count": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 20,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "elapsed_seconds": 0.0485
+    },
+    "char_ngram": {
+      "total": 28,
+      "predicted_duplicate_count": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 20,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "elapsed_seconds": 2.8273
+    },
+    "embedding": {
+      "total": 28,
+      "predicted_duplicate_count": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 20,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "elapsed_seconds": 1.7226
+    },
+    "hybrid_intersection": {
+      "total": 28,
+      "predicted_duplicate_count": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 20,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "elapsed_seconds": 4.5499
+    },
+    "hybrid_union": {
+      "total": 28,
+      "predicted_duplicate_count": 8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 20,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "elapsed_seconds": 4.5499
+    }
+  },
+  "details": [
+    {
+      "pair_id": "real_pair_001",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6988,
+      "embedding_similarity": 0.6412,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_002",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6424,
+      "embedding_similarity": 0.5371,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_003",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6542,
+      "embedding_similarity": 0.7643,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_004",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6274,
+      "embedding_similarity": 0.3873,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_005",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.634,
+      "embedding_similarity": 0.2951,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_006",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6333,
+      "embedding_similarity": 0.5188,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_007",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6111,
+      "embedding_similarity": 0.3741,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_008",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.6366,
+      "embedding_similarity": 0.6371,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_009",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.568,
+      "embedding_similarity": 0.5507,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_010",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.5801,
+      "embedding_similarity": 0.5135,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_011",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.5666,
+      "embedding_similarity": 0.4191,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_012",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.5589,
+      "embedding_similarity": 0.4456,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_013",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.5163,
+      "embedding_similarity": 0.4456,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_014",
+      "pair_type": "high_similarity_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.5594,
+      "embedding_similarity": 0.4386,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_015",
+      "pair_type": "cross_domain_negative_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.0007,
+      "embedding_similarity": 0.0702,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_016",
+      "pair_type": "cross_domain_negative_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.0008,
+      "embedding_similarity": 0.0094,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_017",
+      "pair_type": "cross_domain_negative_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.0017,
+      "embedding_similarity": 0.3047,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_018",
+      "pair_type": "cross_domain_negative_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.0029,
+      "embedding_similarity": 0.048,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_019",
+      "pair_type": "cross_domain_negative_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.003,
+      "embedding_similarity": 0.244,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_020",
+      "pair_type": "cross_domain_negative_candidate",
+      "gold_label": "non_duplicate",
+      "char_similarity": 0.0036,
+      "embedding_similarity": -0.0007,
+      "predictions": {
+        "exact": false,
+        "char_ngram": false,
+        "embedding": false,
+        "hybrid_intersection": false,
+        "hybrid_union": false
+      }
+    },
+    {
+      "pair_id": "real_pair_021",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_022",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_023",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_024",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_025",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_026",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_027",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    },
+    {
+      "pair_id": "real_pair_028",
+      "pair_type": "real_exact_duplicate",
+      "gold_label": "duplicate",
+      "char_similarity": 1.0,
+      "embedding_similarity": 1.0,
+      "predictions": {
+        "exact": true,
+        "char_ngram": true,
+        "embedding": true,
+        "hybrid_intersection": true,
+        "hybrid_union": true
+      }
+    }
+  ],
+  "label_source_note": "当前对照集为构造式实验样本，用于验证方法链路；不能替代真实网页对的独立人工标注。",
+  "input": {
+    "pairs_file": "data\\labels\\semantic_pairs_real_v1.jsonl",
+    "pair_count": 28
+  }
+}

@@ -1,0 +1,1459 @@
+{
+  "risk_scan_version": "risk_scan_v1",
+  "input": {
+    "input": "D:\\Codex\\llm-data-quality-agent\\data\\processed\\html_benchmark_v5_baseline_v1\\production_decisions_benchmark_v1.jsonl",
+    "registry": "D:\\Codex\\llm-data-quality-agent\\config\\source_registry.json"
+  },
+  "reference": {
+    "enabled": false,
+    "path": null,
+    "count": 0
+  },
+  "source_registry": {
+    "registry_version": "source_registry_v2",
+    "registered_count": 35,
+    "unregistered_count": 0,
+    "registered_rate": 1.0,
+    "experiment_eligible_count": 35,
+    "release_eligible_count": 0,
+    "source_counts": {
+      "docs.python.org": 6,
+      "peps.python.org": 4,
+      "scikit-learn.org": 6,
+      "developer.mozilla.org": 8,
+      "developers.google.com": 1,
+      "ibm.com": 1,
+      "oracle.com": 1,
+      "azure.microsoft.com": 2,
+      "itl.nist.gov": 1,
+      "learn.microsoft.com": 2,
+      "blog.python.org": 1,
+      "pytorch.org": 1,
+      "python.org": 1
+    },
+    "license_status_counts": {
+      "to_verify": 35
+    },
+    "usage_policy_counts": {
+      "review_before_release": 35
+    },
+    "source_resolution_counts": {
+      "source_field": 35
+    },
+    "unregistered_sources": []
+  },
+  "summary": {
+    "total": 35,
+    "documents_with_any_risk": 35,
+    "pii_risk_document_count": 2,
+    "source_risk_document_count": 0,
+    "license_risk_document_count": 35,
+    "contamination_document_count": 0,
+    "risk_flag_counts": {
+      "license_risk": 35,
+      "pii_risk": 2
+    },
+    "pii_type_counts": {
+      "email": 2
+    },
+    "source_risk_counts": {},
+    "license_risk_counts": {
+      "license_unverified": 35,
+      "release_not_eligible": 35
+    },
+    "contamination_match_counts": {},
+    "decision_counts": {
+      "keep": 26,
+      "reject": 8,
+      "review": 1
+    }
+  },
+  "documents": [
+    {
+      "id": "html_v3_001",
+      "title": "4. More Control Flow Tools — Python 3.11.17 documentation",
+      "url": "https://docs.python.org/3.11/tutorial/controlflow.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "docs.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_002",
+      "title": "5. Data Structures — Python 3.11.17 documentation",
+      "url": "https://docs.python.org/3.11/tutorial/datastructures.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "docs.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_003",
+      "title": "9. Classes — Python 3.11.17 documentation",
+      "url": "https://docs.python.org/3.11/tutorial/classes.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "docs.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_004",
+      "title": "json — JSON encoder and decoder — Python 3.11.17 documentation",
+      "url": "https://docs.python.org/3.11/library/json.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "docs.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_005",
+      "title": "Coroutines and Tasks — Python 3.11.17 documentation",
+      "url": "https://docs.python.org/3.11/library/asyncio-task.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "docs.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_006",
+      "title": "PEP 20 – The Zen of Python | peps.python.org",
+      "url": "https://peps.python.org/pep-0020/",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": true,
+        "match_count": 1,
+        "matches": [
+          {
+            "type": "email",
+            "severity": "high",
+            "count": 1,
+            "masked_examples": [
+              "p***@python.org"
+            ]
+          }
+        ]
+      },
+      "source_license": {
+        "source_key": "peps.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Enhancement Proposals",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "pii_risk",
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_007",
+      "title": "PEP 257 – Docstring Conventions | peps.python.org",
+      "url": "https://peps.python.org/pep-0257/",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "peps.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Enhancement Proposals",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_008",
+      "title": "PEP 484 – Type Hints | peps.python.org",
+      "url": "https://peps.python.org/pep-0484/",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "peps.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Enhancement Proposals",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_009",
+      "title": "8.3. Preprocessing data — scikit-learn 1.9.1 documentation",
+      "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "scikit-learn.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "scikit-learn Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_010",
+      "title": "3.4. Metrics and scoring: quantifying the quality of predictions — scikit-learn 1.9.1 documentation",
+      "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "scikit-learn.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "scikit-learn Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_011",
+      "title": "3.1. Cross-validation: evaluating estimator performance — scikit-learn 1.9.1 documentation",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "scikit-learn.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "scikit-learn Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_012",
+      "title": "1.11. Ensembles: Gradient boosting, random forests, bagging, voting, stacking — scikit-learn 1.9.1 documentation",
+      "url": "https://scikit-learn.org/stable/modules/ensemble.html",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "scikit-learn.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "scikit-learn Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_013",
+      "title": "Basic HTML syntax - Learn web development | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_014",
+      "title": "Headings and paragraphs - Learn web development | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_015",
+      "title": "Creating links - Learn web development | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/Creating_links",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": true,
+        "match_count": 4,
+        "matches": [
+          {
+            "type": "email",
+            "severity": "high",
+            "count": 4,
+            "masked_examples": [
+              "n***@mozilla.org",
+              "n***@rapidtables.com"
+            ]
+          }
+        ]
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "pii_risk",
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_016",
+      "title": "What is JavaScript? - Learn web development | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/What_is_JavaScript",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_017",
+      "title": "Overview of HTTP - HTTP | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_018",
+      "title": "Accessibility | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_019",
+      "title": "What is Machine Learning?  |  Google for Developers",
+      "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developers.google.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Google for Developers",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_020",
+      "title": "What Is NLP (Natural Language Processing)? | IBM",
+      "url": "https://www.ibm.com/think/topics/natural-language-processing",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "ibm.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "IBM",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_021",
+      "title": "What Is a Database? | Oracle",
+      "url": "https://www.oracle.com/database/what-is-database/",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "oracle.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Oracle",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_022",
+      "title": "What Is Distributed Computing? | Microsoft Azure",
+      "url": "https://azure.microsoft.com/en-gb/resources/cloud-computing-dictionary/what-is-distributed-computing",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "azure.microsoft.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Microsoft Azure",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v5_023",
+      "title": "1.1.1. What is EDA?",
+      "url": "https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "itl.nist.gov",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "NIST/SEMATECH Engineering Statistics Handbook",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_024",
+      "title": "什么是机器学习？ | Microsoft Azure",
+      "url": "https://azure.microsoft.com/zh-cn/resources/cloud-computing-dictionary/what-is-machine-learning-platform",
+      "language": "zh",
+      "decision": "review",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "azure.microsoft.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Microsoft Azure",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_025",
+      "title": "选择自然语言处理技术 - Azure Architecture Center | Microsoft Learn",
+      "url": "https://learn.microsoft.com/zh-cn/azure/architecture/data-guide/technology-choices/natural-language-processing",
+      "language": "zh",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "learn.microsoft.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Microsoft Learn",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v4_026",
+      "title": "关系与NoSQL 数据 - .NET | Microsoft Learn",
+      "url": "https://learn.microsoft.com/zh-cn/dotnet/architecture/cloud-native/relational-vs-nosql-data",
+      "language": "zh",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "learn.microsoft.com",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Microsoft Learn",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_027",
+      "title": "Python Documentation contents — Python 3.11.17 documentation",
+      "url": "https://docs.python.org/3.11/contents.html",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "docs.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_028",
+      "title": "User Guide — scikit-learn 1.9.1 documentation",
+      "url": "https://scikit-learn.org/stable/user_guide.html",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "scikit-learn.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "scikit-learn Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_029",
+      "title": "HTML elements reference - HTML | MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements",
+      "language": "en",
+      "decision": "keep",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_030",
+      "title": "PEP 0 – Index of Python Enhancement Proposals (PEPs) | peps.python.org",
+      "url": "https://peps.python.org/",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "peps.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Enhancement Proposals",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_031",
+      "title": "Python Insider",
+      "url": "https://blog.python.org/",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "blog.python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python Insider",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_032",
+      "title": "Blog - PyTorch",
+      "url": "https://pytorch.org/blog/",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "pytorch.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "PyTorch",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_033",
+      "title": "Our Blogs | Python.org",
+      "url": "https://www.python.org/blogs/",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "python.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "Python.org",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_034",
+      "title": "MDN Blog",
+      "url": "https://developer.mozilla.org/en-US/blog/",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "developer.mozilla.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "MDN Web Docs",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    },
+    {
+      "id": "html_v3_035",
+      "title": "Release History — scikit-learn 1.9.1 documentation",
+      "url": "https://scikit-learn.org/stable/whats_new.html",
+      "language": "en",
+      "decision": "reject",
+      "pii": {
+        "has_pii": false,
+        "match_count": 0,
+        "matches": []
+      },
+      "source_license": {
+        "source_key": "scikit-learn.org",
+        "source_resolution": "source_field",
+        "source_registered": true,
+        "source_registry_status": "registered",
+        "source_registry_name": "scikit-learn Documentation",
+        "license_status": "to_verify",
+        "usage_policy": "review_before_release",
+        "experiment_eligible": true,
+        "release_eligible": false,
+        "source_risks": [],
+        "license_risks": [
+          "license_unverified",
+          "release_not_eligible"
+        ],
+        "has_source_risk": false,
+        "has_license_risk": true
+      },
+      "contamination": {
+        "reference_enabled": false,
+        "contaminated": false,
+        "matches": []
+      },
+      "risk_flags": [
+        "license_risk"
+      ],
+      "has_any_risk": true
+    }
+  ]
+}

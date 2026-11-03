@@ -1,0 +1,172 @@
+{
+  "optimization_version": "scaling_optimization_v1",
+  "fixture_manifest": "D:\\Codex\\llm-data-quality-agent\\data\\processed\\performance_fixtures_v1\\manifest.json",
+  "fixture_mode": "unique",
+  "synthetic": true,
+  "near_dedup_threshold": 0.75,
+  "near_dedup_max_docs": 2000,
+  "worker_counts": [
+    2,
+    4
+  ],
+  "results": [
+    {
+      "size": 1000,
+      "fixture_path": "D:\\Codex\\llm-data-quality-agent\\data\\processed\\performance_fixtures_v1\\fixture_001000.jsonl",
+      "feature_extraction": {
+        "input_count": 1000,
+        "serial": {
+          "workers": 1,
+          "elapsed_seconds": 2.7007,
+          "throughput_docs_per_second": 370.2744,
+          "output_count": 1000
+        },
+        "parallel": [
+          {
+            "workers": 2,
+            "elapsed_seconds": 5.2619,
+            "throughput_docs_per_second": 190.0453,
+            "output_count": 1000,
+            "speedup_vs_serial": 0.5133,
+            "correctness": {
+              "equal": true,
+              "serial_count": 1000,
+              "parallel_count": 1000,
+              "mismatch_count": 0,
+              "mismatch_ids": []
+            }
+          },
+          {
+            "workers": 4,
+            "elapsed_seconds": 3.8848,
+            "throughput_docs_per_second": 257.4104,
+            "output_count": 1000,
+            "speedup_vs_serial": 0.6952,
+            "correctness": {
+              "equal": true,
+              "serial_count": 1000,
+              "parallel_count": 1000,
+              "mismatch_count": 0,
+              "mismatch_ids": []
+            }
+          }
+        ]
+      },
+      "near_deduplication": {
+        "input_count": 1000,
+        "threshold": 0.75,
+        "baseline": {
+          "elapsed_seconds": 1.8137,
+          "throughput_docs_per_second": 551.3727,
+          "candidate_pair_count": 499500,
+          "scored_pair_count": 499500,
+          "duplicate_pair_count": 13790,
+          "duplicate_document_count": 1000
+        },
+        "indexed": {
+          "elapsed_seconds": 7.6648,
+          "throughput_docs_per_second": 130.466,
+          "duplicate_pair_count": 13790,
+          "duplicate_document_count": 1000,
+          "theoretical_pair_count": 499500,
+          "candidate_pair_count": 499500,
+          "scored_pair_count": 499500,
+          "candidate_reduction_ratio": 0.0,
+          "vocabulary_size": 37366
+        },
+        "pair_parity": {
+          "equal": true,
+          "baseline_pair_count": 13790,
+          "indexed_pair_count": 13790,
+          "intersection_count": 13790,
+          "recall_vs_baseline": 1.0,
+          "extra_pair_count": 0,
+          "missing_pair_count": 0
+        },
+        "capped": false,
+        "cap": 2000
+      }
+    },
+    {
+      "size": 10000,
+      "fixture_path": "D:\\Codex\\llm-data-quality-agent\\data\\processed\\performance_fixtures_v1\\fixture_010000.jsonl",
+      "feature_extraction": {
+        "input_count": 10000,
+        "serial": {
+          "workers": 1,
+          "elapsed_seconds": 18.3954,
+          "throughput_docs_per_second": 543.6135,
+          "output_count": 10000
+        },
+        "parallel": [
+          {
+            "workers": 2,
+            "elapsed_seconds": 13.3096,
+            "throughput_docs_per_second": 751.3395,
+            "output_count": 10000,
+            "speedup_vs_serial": 1.3821,
+            "correctness": {
+              "equal": true,
+              "serial_count": 10000,
+              "parallel_count": 10000,
+              "mismatch_count": 0,
+              "mismatch_ids": []
+            }
+          },
+          {
+            "workers": 4,
+            "elapsed_seconds": 9.4234,
+            "throughput_docs_per_second": 1061.1846,
+            "output_count": 10000,
+            "speedup_vs_serial": 1.9521,
+            "correctness": {
+              "equal": true,
+              "serial_count": 10000,
+              "parallel_count": 10000,
+              "mismatch_count": 0,
+              "mismatch_ids": []
+            }
+          }
+        ]
+      },
+      "near_deduplication": {
+        "input_count": 2000,
+        "threshold": 0.75,
+        "baseline": {
+          "elapsed_seconds": 4.095,
+          "throughput_docs_per_second": 488.3948,
+          "candidate_pair_count": 1999000,
+          "scored_pair_count": 1999000,
+          "duplicate_pair_count": 56145,
+          "duplicate_document_count": 2000
+        },
+        "indexed": {
+          "elapsed_seconds": 32.6787,
+          "throughput_docs_per_second": 61.2019,
+          "duplicate_pair_count": 56145,
+          "duplicate_document_count": 2000,
+          "theoretical_pair_count": 1999000,
+          "candidate_pair_count": 1999000,
+          "scored_pair_count": 1999000,
+          "candidate_reduction_ratio": 0.0,
+          "vocabulary_size": 40552
+        },
+        "pair_parity": {
+          "equal": true,
+          "baseline_pair_count": 56145,
+          "indexed_pair_count": 56145,
+          "intersection_count": 56145,
+          "recall_vs_baseline": 1.0,
+          "extra_pair_count": 0,
+          "missing_pair_count": 0
+        },
+        "capped": true,
+        "cap": 2000
+      }
+    }
+  ],
+  "ray_decision": {
+    "status": "not_decided",
+    "reason": "先比较候选缩减和单机并行的收益；不因基线耗时直接引入 Ray"
+  }
+}

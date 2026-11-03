@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pytest
 
@@ -134,3 +135,38 @@ def test_summarize_source_registry_counts_unknown_sources():
     assert summary["unregistered_sources"] == [
         "unknown.org"
     ]
+
+
+def test_production_registry_covers_v5_sources():
+    project_root = Path(__file__).resolve().parents[1]
+    registry = load_source_registry(
+        project_root / "config/source_registry.json"
+    )
+
+    assert registry["registry_version"] == (
+        "source_registry_v2"
+    )
+
+    required_sources = {
+        "developers.google.com",
+        "ibm.com",
+        "oracle.com",
+        "azure.microsoft.com",
+        "learn.microsoft.com",
+        "itl.nist.gov",
+    }
+
+    assert required_sources <= set(
+        registry["sources"]
+    )
+
+    for source_key in required_sources:
+        record = registry["sources"][source_key]
+        assert record["license_status"] == (
+            "to_verify"
+        )
+        assert record["usage_policy"] == (
+            "review_before_release"
+        )
+        assert record["experiment_eligible"] is True
+        assert record["release_eligible"] is False

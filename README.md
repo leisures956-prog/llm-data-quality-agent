@@ -8,9 +8,9 @@
 
 ## 当前项目状态
 
-当前已完成 `benchmark_v1` 和 HTML Benchmark v2 的端到端验证。
+当前已完成 `benchmark_v1`、HTML Benchmark v2 和 HTML Benchmark v5 基线的端到端验证。
 
-Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v2 当前使用的规则版本为 `quality_rules_v3_content_density_aggregation`，新增了内容密度、导航页和文章聚合页识别。
+Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v2/v5 当前使用的规则版本为 `quality_rules_v3_content_density_aggregation`，新增了内容密度、导航页和文章聚合页识别。
 
 已实现：
 
@@ -30,6 +30,7 @@ Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v
 - 区分实验采样与正式发布采样的来源策略
 - Benchmark 汇总报告生成
 - 真实网页 HTML Benchmark v2 验证
+- HTML Benchmark v5 基线冻结、开发集评估和盲测评估
 - 内容密度优先评分
 - 导航页和目录页识别
 - Blog、News、Insider 等文章聚合页识别
@@ -37,10 +38,15 @@ Benchmark v1 的正式决策流程为 `calibrated_scoring_v1`；HTML Benchmark v
 - Benchmark 版本差异对比报告
 - review 数量预算控制
 - 轻量 Benchmark 回归门禁与 GitHub Actions 自动检查
+- 语义去重对照实验（精确、字符 n-gram、Embedding 和组合方案）
+- 可选的本地 LLM-as-a-Judge 评分与人工标签对照
+- PII、来源、许可证和数据污染风险扫描
+- 合成规模样本、性能基线和单机并行优化实验
 
 当前仍需加强：
 
 - 更大规模、更多网页类型的人工审核集
+- HTML Benchmark v5 盲测集当前只有 4 条，盲测结论仍属于小样本初步结果
 - 真实网页中的导航、广告、页脚和 Cookie 模板验证
 - 更可靠的领域/主题分类器
 - 将完整大规模 Benchmark 与门禁接入定期或手动回归任务
@@ -188,6 +194,94 @@ Benchmark 汇总报告
 
 - `data/processed/html_benchmark_v2_aggregation_v3`
 - `reports/html_benchmark_v2_aggregation_v3`
+
+## HTML Benchmark v5：基线、盲测与风险评估
+
+HTML Benchmark v5 使用 35 条真实网页 HTML 数据，基线版本和输入哈希已冻结在：
+
+`reports/html_benchmark_v5_baseline_v1/baseline_lock.json`
+
+基线生产决策分布如下：
+
+| 决策 | 数量 |
+| --- | ---: |
+| keep | 26 |
+| review | 1 |
+| reject | 8 |
+
+开发集包含 11 条人工标签，机器决策与人工决策在该开发集上完全一致。盲测集包含 4 条样本，结果如下：
+
+| 指标 | 结果 |
+| --- | ---: |
+| 硬误杀数量 | 0 |
+| 硬误杀率 | 0.0000 |
+| 误保数量 | 1 |
+| 误保率 | 0.5000 |
+| 人工复核数量 | 1 |
+| 人工复核比例 | 0.2500 |
+| 自动决策覆盖率 | 0.7500 |
+
+盲测结果只包含 4 条样本，因此不能据此宣称规则已经具有稳定的泛化能力。当前发现的典型 Bad Case 是 `html_v3_018 / Accessibility | MDN`：页面包含主题介绍和多个教程入口，被人工判断为聚合页，但系统直接保留。该案例记录在：
+
+`reports/html_benchmark_v5_baseline_v1/blind_evaluation.json`
+
+在没有新的留出样本之前，不根据这个单一盲测案例修改 v5 规则；如果后续调整规则，需要创建新的规则版本和新的盲测样本。
+
+## 语义去重实验
+
+语义去重实验没有修改生产近似去重阈值。当前对照集包含 28 对样本：
+
+- 8 对真实精确重复
+- 14 对高相似候选
+- 6 对跨领域负例
+
+在字符 n-gram、Embedding 和组合方案的对照中，当前小型对照集上的 Embedding 结果为 Precision `1.0`、Recall `1.0`、F1 `1.0`。由于样本规模仍然较小，这只能说明实验实现和当前对照集上的行为一致，不能证明 Embedding 在所有网页数据上都优于字符 n-gram。
+
+报告文件：
+
+`reports/html_benchmark_v5_baseline_v1/semantic_pair_real_eval_085.json`
+
+## LLM-as-a-Judge 实验
+
+项目提供可选的本地 HTTP LLM Judge 接口，使用 Ollama 的 `qwen2.5:3b` 完成了开发集实验。11 条开发样本的结果为：
+
+- 覆盖率：`1.0`
+- 硬误杀数量：`0`
+- 误保数量：`0`
+- `review` 数量：7 条，占 `63.64%`
+- 自动决策覆盖率：`36.36%`
+
+因此当前 LLM Judge 适合作为辅助评分和边界样本分析工具，暂不替代现有规则评分，也不作为生产决策来源。LLM Judge 结果必须记录模型、Prompt、缓存和失败信息，不能只报告单一准确率。
+
+## 数据风险扫描
+
+HTML Benchmark v5 基线风险扫描结果：
+
+| 风险类型 | 数量 | 说明 |
+| --- | ---: | --- |
+| PII 风险 | 2 | 需要进一步人工确认是否为页面示例文本 |
+| 来源风险 | 0 | 来源均已登记 |
+| 许可证风险 | 35 | 当前许可证状态仍为 `to_verify` |
+| 污染风险 | 0 | 在当前未提供外部参考集的扫描中未发现匹配 |
+
+许可证状态为 `to_verify` 的数据可以用于实验分析，但不能直接宣称适合正式发布或训练数据发布。
+
+## 性能与规模实验
+
+性能实验使用明确标记为 `synthetic=true` 的合成样本，不修改 v5 原始数据。基线测量了 1000、10000 和 100000 条规模；100000 条时正文特征计算约 619 秒。近似去重基线在性能工具中限制为最多 2000 条输入，因此不能把该阶段的近似去重耗时解释成完整 100000 条的耗时。
+
+单机优化对照结果：
+
+| 规模 | 并行配置 | 相对串行速度 | 结果一致性 |
+| ---: | --- | ---: | --- |
+| 1000 | 4 进程 | 0.70x | 一致 |
+| 10000 | 4 进程 | 1.95x | 一致 |
+
+1000 条数据的进程启动开销大于收益；10000 条数据开始出现稳定加速。字符 n-gram 候选索引在当前合成数据上候选缩减率为 `0`，但与现有实现的重复对召回率为 `1.0`，因此暂不接入生产近似去重。当前也没有足够证据引入 Ray，后续只有在单机性能成为明确瓶颈时再评估分布式方案。
+
+性能实验报告：
+
+`reports/html_benchmark_v5_baseline_v1/scaling_optimization_v1.json`
 
 ## Benchmark 自动化回归门禁
 
@@ -342,8 +436,18 @@ tests/                        自动化测试
 - `reports/distribution_benchmark_summary.json`：数据分布统计
 - `reports/sampling_benchmark_summary.json`：采样计划统计
 - `reports/benchmark_compare_density_v2_vs_aggregation_v3.json`：规则版本对比报告
+- `reports/html_benchmark_v5_baseline_v1/baseline_lock.json`：HTML Benchmark v5 冻结基线
+- `data/labels/html_benchmark_v5_audit_v1.jsonl`：v5 开发集与盲测集人工标签
+- `reports/html_benchmark_v5_baseline_v1/dev_evaluation.json`：v5 开发集评估
+- `reports/html_benchmark_v5_baseline_v1/blind_evaluation.json`：v5 盲测评估
+- `reports/html_benchmark_v5_baseline_v1/risk_scan_v1.json`：PII、来源、许可证和污染风险汇总
+- `reports/html_benchmark_v5_baseline_v1/semantic_pair_real_eval_085.json`：语义去重对照评估
+- `reports/html_benchmark_v5_baseline_v1/performance_v1.json`：规模性能基线
+- `reports/html_benchmark_v5_baseline_v1/scaling_optimization_v1.json`：并行抽取和候选索引优化对照
 - `config/benchmark_regression_policy.json`：回归门禁阈值与快照配置
 - `tools/run_benchmark_regression_gate.py`：回归门禁脚本
+- `tools/evaluate_html_benchmark_v5.py`：v5 开发集/盲测集评估脚本
+- `tools/run_scaling_optimization_experiments.py`：性能优化对照实验脚本
 - `reports/html_benchmark_v2_sampling_policy_*/`：实验/正式发布采样策略报告（本地生成）
 
 仓库有意忽略 `data/processed/` 以及较大的 Benchmark 原始数据文件，避免把可重新生成的中间结果和大文件提交到 GitHub。克隆仓库后可以直接安装依赖并运行全部自动化测试；如果要复现完整 Benchmark，需要先在本地准备对应的 `data/raw/` 数据文件。
@@ -442,8 +546,10 @@ Benchmark 专用脚本会生成带有 `_benchmark_v1` 后缀的结果，便于�
 
 ## 下一阶段计划
 
-1. 核验主要来源的许可证状态，将必要来源从 `to_verify` 更新为明确的策略状态。
-2. 继续增加不同类型的真实网页 HTML 数据，但采用批量收集和分层抽样，不逐条人工处理。
-3. 将 Benchmark 版本对比接入更大规模的自动化回归测试。
-4. 改进领域/主题分类和多语言分布分析。
-5. 规则稳定后，再评估是否加入轻量分类器或 LLM scorer，并与当前规则进行可重复的消融对比。
+1. 保持 v5 规则和生产决策冻结，不根据 4 条盲测样本中的单一误保案例直接调参。
+2. 如果需要更强的泛化结论，按重复组和页面类型补充新的盲测样本；规则一旦调整，旧盲测集不再作为未见数据使用。
+3. 核验主要来源的许可证状态，将必要来源从 `to_verify` 更新为明确的策略状态。
+4. 继续增加不同类型的真实网页 HTML 数据，但采用批量收集和分层抽样，不逐条人工处理。
+5. 将 Benchmark 版本对比和轻量门禁接入更大规模的自动化回归任务。
+6. 只有在单机性能成为明确瓶颈时，再评估 Ray；当前优先保留可复现的单机实验结果。
+7. 如果具备合适的模型、算力和留出集，再做“原始数据 vs 质量筛选数据”的下游验证；否则明确项目当前只证明数据质量和治理能力改善。

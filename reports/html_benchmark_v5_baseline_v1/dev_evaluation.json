@@ -1,0 +1,63 @@
+{
+  "evaluation_version": "html_benchmark_v5_eval_v1",
+  "split": "dev",
+  "total": 11,
+  "machine_decision_counts": {
+    "reject": 7,
+    "keep": 4
+  },
+  "human_decision_counts": {
+    "reject": 7,
+    "keep": 4
+  },
+  "decision_cross_table": {
+    "keep": {
+      "keep": 4,
+      "reject": 0
+    },
+    "review": {
+      "keep": 0,
+      "reject": 0
+    },
+    "reject": {
+      "keep": 0,
+      "reject": 7
+    }
+  },
+  "strict_keep_metrics": {
+    "total": 11,
+    "true_positive": 4,
+    "false_positive": 0,
+    "false_negative": 0,
+    "true_negative": 7,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "review_handling": {
+    "strict_metrics_treat_review_as_not_keep": true,
+    "hard_error_rates_count_only_direct_keep_or_reject": true
+  },
+  "hard_false_rejection_count": 0,
+  "hard_false_rejection_rate": 0.0,
+  "false_acceptance_count": 0,
+  "false_acceptance_rate": 0.0,
+  "review_count": 0,
+  "review_rate": 0.0,
+  "automatic_decision_count": 11,
+  "automatic_decision_coverage": 1.0,
+  "bad_case_counts": {
+    "navigation_page": 3,
+    "aggregation_page": 4,
+    "none": 4
+  },
+  "mismatch_bad_case_counts": {},
+  "error_cases": [],
+  "review_cases": [],
+  "audit_source": {
+    "decisions_file": "data\\processed\\html_benchmark_v5_baseline_v1\\production_decisions_benchmark_v1.jsonl",
+    "labels_file": "data\\labels\\html_benchmark_v5_audit_v1.jsonl",
+    "labeled_count": 11
+  }
+}

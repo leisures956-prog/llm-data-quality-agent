@@ -1,0 +1,47 @@
+{
+  "baseline_lock_version": "baseline_lock_v1",
+  "baseline_id": "html_benchmark_v5_baseline_v1",
+  "frozen_on": "2026-10-29",
+  "status": "frozen",
+  "dataset": {
+    "path": "data/raw/html_benchmark_v5_retry_v1.jsonl",
+    "sha256": "AE64140E24043F58FEC3DEB1D0C7F13A718B87712BB0094AF8132A90262DEE7C",
+    "total": 35,
+    "language_counts": {
+      "en": 32,
+      "zh": 3
+    },
+    "category_counts": {
+      "technical_content": 26,
+      "navigation": 4,
+      "blog_index": 3,
+      "news_index": 1,
+      "release_notes": 1
+    }
+  },
+  "pipeline": {
+    "dataset_version": "html_benchmark_v5_baseline_v1",
+    "pipeline_version": "quality_pipeline_v1",
+    "rule_version": "quality_rules_v3_content_density_aggregation",
+    "run_id": "html_benchmark_v5_baseline_v1"
+  },
+  "results": {
+    "processed_directory": "data/processed/html_benchmark_v5_baseline_v1",
+    "report_directory": "reports/html_benchmark_v5_baseline_v1",
+    "run_report": "reports/html_benchmark_v5_baseline_v1/html_benchmark_v5_baseline_v1_run_report.json",
+    "decision_counts": {
+      "keep": 26,
+      "review": 1,
+      "reject": 8
+    },
+    "missing_report_count": 0
+  },
+  "human_evaluation_plan": {
+    "template_path": "data/labels/html_benchmark_v5_audit_v1.jsonl",
+    "pilot_count": 15,
+    "development_count": 11,
+    "blind_test_count": 4,
+    "split_policy": "Select candidates after duplicate grouping; keep the blind_test IDs frozen until the final evaluation.",
+    "label_policy": "The template contains blank human fields. Machine decisions must not be treated as human labels."
+  }
+}

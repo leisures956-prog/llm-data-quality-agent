@@ -1,0 +1,21 @@
+{
+  "judge_version": "llm_judge_v1",
+  "prompt_version": "quality_judge_prompt_v1",
+  "model": "llm-judge-model",
+  "endpoint_env": "LLM_JUDGE_ENDPOINT",
+  "api_key_env": "LLM_JUDGE_API_KEY",
+  "timeout_seconds": 30,
+  "max_chars": 12000,
+  "retry": {
+    "max_retries": 2,
+    "backoff_seconds": 0.2
+  },
+  "selection": {
+    "include_decisions": [
+      "review"
+    ],
+    "score_min": 40,
+    "score_max": 70,
+    "include_near_duplicate": true
+  }
+}

@@ -1,4 +1,5 @@
 import json
+import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -7,18 +8,27 @@ from urllib.parse import urlparse
 import httpx
 from bs4 import BeautifulSoup
 
+from tools.download_failure import (
+    classify_download_failure,
+)
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-MANIFEST_PATH = (
+DEFAULT_MANIFEST_PATH = (
     PROJECT_ROOT / "data/raw/html_urls_v2.jsonl"
 )
-OUTPUT_PATH = (
+DEFAULT_OUTPUT_PATH = (
     PROJECT_ROOT / "data/raw/html_benchmark_v2.jsonl"
 )
-ERROR_PATH = (
+DEFAULT_ERROR_PATH = (
     PROJECT_ROOT / "data/raw/html_benchmark_v2_errors.jsonl"
 )
+
+# 保留旧常量名称，避免已有本地脚本导入时发生不兼容。
+MANIFEST_PATH = DEFAULT_MANIFEST_PATH
+OUTPUT_PATH = DEFAULT_OUTPUT_PATH
+ERROR_PATH = DEFAULT_ERROR_PATH
 
 HEADERS = {
     "User-Agent": (
@@ -38,13 +48,58 @@ def read_jsonl(path):
     ]
 
 
+def resolve_configured_path(
+    env_name,
+    default_path,
+):
+    value = os.environ.get(env_name, "").strip()
+
+    if not value:
+        return default_path
+
+    path = Path(value)
+
+    if not path.is_absolute():
+        path = PROJECT_ROOT / path
+
+    return path
+
+
+def get_download_paths():
+    """Return manifest/output/error paths selected by the environment.
+
+    Relative paths are resolved from the project root, so the downloader
+    remains reproducible regardless of the caller's current directory.
+    """
+
+    return {
+        "manifest": resolve_configured_path(
+            "HTML_MANIFEST_PATH",
+            DEFAULT_MANIFEST_PATH,
+        ),
+        "output": resolve_configured_path(
+            "HTML_OUTPUT_PATH",
+            DEFAULT_OUTPUT_PATH,
+        ),
+        "errors": resolve_configured_path(
+            "HTML_ERROR_PATH",
+            DEFAULT_ERROR_PATH,
+        ),
+    }
+
+
 def main():
-    if OUTPUT_PATH.exists():
+    paths = get_download_paths()
+    manifest_path = paths["manifest"]
+    output_path = paths["output"]
+    error_path = paths["errors"]
+
+    if output_path.exists():
         raise FileExistsError(
-            f"输出文件已存在，为避免覆盖：{OUTPUT_PATH}"
+            f"输出文件已存在，为避免覆盖：{output_path}"
         )
 
-    manifest = read_jsonl(MANIFEST_PATH)
+    manifest = read_jsonl(manifest_path)
 
     ids = [item["id"] for item in manifest]
     urls = [item["url"] for item in manifest]
@@ -139,6 +194,21 @@ def main():
                 records.append(record)
 
             except Exception as exc:
+                response = getattr(
+                    exc,
+                    "response",
+                    None,
+                )
+                status_code = getattr(
+                    response,
+                    "status_code",
+                    None,
+                )
+                failure = classify_download_failure(
+                    type(exc).__name__,
+                    str(exc),
+                    status_code,
+                )
                 errors.append(
                     {
                         "id": item.get("id"),
@@ -147,6 +217,7 @@ def main():
                             exc
                         ).__name__,
                         "error": str(exc),
+                        **failure,
                     }
                 )
                 print(
@@ -155,7 +226,16 @@ def main():
 
             time.sleep(1.0)
 
-    OUTPUT_PATH.write_text(
+    output_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+    error_path.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    output_path.write_text(
         "\n".join(
             json.dumps(
                 item,
@@ -167,7 +247,7 @@ def main():
         encoding="utf-8",
     )
 
-    ERROR_PATH.write_text(
+    error_path.write_text(
         "\n".join(
             json.dumps(
                 item,
@@ -181,8 +261,8 @@ def main():
 
     print(f"成功下载：{len(records)} 条")
     print(f"下载失败：{len(errors)} 条")
-    print(f"数据文件：{OUTPUT_PATH}")
-    print(f"错误文件：{ERROR_PATH}")
+    print(f"数据文件：{output_path}")
+    print(f"错误文件：{error_path}")
 
 
 if __name__ == "__main__":

@@ -1,3 +1,6 @@
 # Dependencies for optional benchmark download scripts.
 -r requirements.txt
 datasets>=3,<6
+# Optional semantic deduplication backend.  The model itself is downloaded
+# lazily when tools.run_semantic_deduplicate is executed.
+sentence-transformers>=3,<6
